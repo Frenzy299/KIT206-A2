@@ -109,7 +109,7 @@ namespace GMISwpf
                     {
                         ClassID = reader.GetInt32 (0),
                         GroupID = reader.GetInt32 (1),
-                        //Day = reader.GetEnum(2)
+                        Day = ParseEnum<Day> (reader.GetString (2)),
                         //StartTime = (DateTime)reader.GetMySqlDateTime(3),
                         //EndTime = reader.GetDateTime(4),
                         Room = reader.GetString(5)
@@ -322,6 +322,20 @@ namespace GMISwpf
                 FilteredGroups.Add(s);
             }
             // Change FilteredGroups to only contain groups containing the 'name' string
+        }
+
+        public void FilterClassesByGroup (int groupId)
+        {
+            var filtered = from s in AllClasses
+                           where s.GroupID == groupId
+                           select s;
+
+            FilteredClasses.Clear ();
+
+            foreach (Class s in filtered)
+            {
+                FilteredClasses.Add (s);
+            }
         }
 
         public void PrintStudents ()
