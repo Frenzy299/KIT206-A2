@@ -86,8 +86,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class.cs" />
     <Compile Include="DataManager.cs" />
     <Compile Include="Group.cs" />
+    <Compile Include="Meeting.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Student.cs" />
