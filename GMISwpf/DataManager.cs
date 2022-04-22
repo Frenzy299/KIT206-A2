@@ -66,31 +66,16 @@ namespace GMISwpf
             return FilteredStudents;
         }
 
-        public ObservableCollection<Group> GetFilteredGroups ()
-        {
-            return FilteredGroups;
-        }
-
-        public ObservableCollection<Meeting> GetFilteredMeetings ()
-        {
-            return FilteredMeetings;
-        }
-
-        public ObservableCollection<Class> GetFilteredClasses ()
-        {
-            return FilteredClasses;
-        }
-
-        public List<Student> LoadClasses()
+        public List<Class> LoadClasses()
         {
             MySqlDataReader reader = null;
-            List<Student> students = new List<Student>();
+            List<Class> classes  = new List<Class>();
 
             try
             {
                 conn.Open();
 
-                MySqlCommand myCommand = new MySqlCommand("select * from student", conn);
+                MySqlCommand myCommand = new MySqlCommand("select * from classes", conn);
 
                 //myCommand.Parameters.AddWithValue("number"
 
@@ -100,13 +85,15 @@ namespace GMISwpf
                 while (reader.Read())
                 {
                     // populate the students list using values found in the reader at this table row
-                    students.Add(new Student
+                    classes.Add(new Class
                     {
-                        StudentId = reader.GetInt32(0),
-                        GivenName = reader.GetString(1),
-                        FamilyName = reader.GetString(2),
-                        GroupId = reader.IsDBNull(3) ? 0 : reader.GetInt32(3), // If student is in group NULL then assign group 0 (no group)
-                        Email = reader.GetString(7)
+                        ClassID = reader.GetInt32(0),
+                        StartTime = reader.GetDateTime(3),
+                        EndTime = reader.GetDateTime(4),
+                        GroupID = reader.GetInt32(1), 
+                        Room = reader.GetString(7)
+                        //Day = reader.GetEnum(2)
+
                     });
                 }
             }
@@ -125,13 +112,13 @@ namespace GMISwpf
                 }
             }
 
-            return students;
+            return classes;
         }
 
-        public List<Student> LoadMeetings()
+        public List<Meeting> LoadMeetings()
         {
             MySqlDataReader reader = null;
-            List<Student> students = new List<Student>();
+            List<Meeting> meetings = new List<Meeting>();
 
             try
             {
@@ -147,13 +134,14 @@ namespace GMISwpf
                 while (reader.Read())
                 {
                     // populate the students list using values found in the reader at this table row
-                    students.Add(new Student
+                    meetings.Add(new Meeting
                     {
-                        StudentId = reader.GetInt32(0),
-                        GivenName = reader.GetString(1),
-                        FamilyName = reader.GetString(2),
-                        GroupId = reader.IsDBNull(3) ? 0 : reader.GetInt32(3), // If student is in group NULL then assign group 0 (no group)
-                        Email = reader.GetString(7)
+                        MeetingId = reader.GetInt32(0),
+                        StartTime = reader.GetDateTime(1),
+                        EndTime = reader.GetDateTime(2),
+                        GroupID = reader.GetInt32(3), // If student is in group NULL then assign group 0 (no group)
+                        Room = reader.GetString(7)
+                        //Day = reader.GetEnum(2)
                     });
                 }
             }
@@ -172,7 +160,7 @@ namespace GMISwpf
                 }
             }
 
-            return students;
+            return meetings;
         }
 
         /// <summary>

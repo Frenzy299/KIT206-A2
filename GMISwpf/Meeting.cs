@@ -13,6 +13,7 @@ namespace GMISwpf
         public DateTime EndTime { get; set; }
         public String Room { get; set; }
         public Day Day { get; set; }
+        public int GroupID { get; set; }
 
         public override string ToString()
         {
