@@ -16,19 +16,32 @@ using System.Windows.Shapes;
 namespace GMISwpf
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for UserSelection.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class UserSelection : Page
     {
         private DataManager theManager;
 
-        public MainWindow ()
+        public UserSelection ()
         {
             InitializeComponent ();
+            goButton.IsEnabled = false;
 
-            // Reference to DataManager created in App.xaml
             theManager = (DataManager)Application.Current.FindResource ("datamanager");
-            mainFrame.Content = new UserSelection ();
+        }
+
+        private void Button_Click (object sender, RoutedEventArgs e)
+        {
+            MainWindow objMainWindow = (MainWindow)Window.GetWindow (this);
+
+            theManager.CurrentStudent = (Student)studentList.SelectedItem;
+
+            objMainWindow.Content = new Home ();
+        }
+
+        private void studentList_SelectionChanged (object sender, SelectionChangedEventArgs e)
+        {
+            goButton.IsEnabled = true;
         }
     }
 }
