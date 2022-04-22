@@ -295,11 +295,31 @@ namespace GMISwpf
 
         public void FilterMeetingsByGroup (int groupId)
         {
+            var filtered = from s in AllMeetings
+                           where s.GroupID == groupId
+                           select s;
+
+            FilteredStudents.Clear();
+
+            foreach (Meeting s in filtered)
+            {
+                FilteredMeetings.Add(s);
+            }
             // Use LINQ to change FilteredMeetings
         }
 
         public void FilterGroupsByName (string name)
         {
+            var filtered = from s in AllGroups
+                           where s.GroupName == name
+                           select s;
+
+            FilteredGroups.Clear();
+
+            foreach (Group s in filtered)
+            {
+                FilteredGroups.Add(s);
+            }
             // Change FilteredGroups to only contain groups containing the 'name' string
         }
 
