@@ -20,6 +20,10 @@ namespace GMISwpf
 
         private static MySqlConnection conn;
 
+        public static T ParseEnum<T>(string value)
+        {
+            return (T)Enum.Parse(typeof(T), value);
+        }
         // Master lists: Populate these by accessing database using SQL
 
         public List<Student> AllStudents { get; set; }
@@ -153,7 +157,7 @@ namespace GMISwpf
                     {
                         MeetingId = reader.GetInt32(0),
                         GroupID = reader.GetInt32 (1),
-                        //Day = reader.GetEnum(2)
+                        Day = ParseEnum<Day>(reader.GetString(2)),
                         //StartTime = reader.GetDateTime(3),
                         //EndTime = reader.GetDateTime(4),
                         Room = reader.GetString(5)
