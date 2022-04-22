@@ -6,5 +6,8 @@
     <Application.Resources>
         <local:DataManager x:Key="datamanager"/>
         <ObjectDataProvider x:Key="StudentList" ObjectInstance="{StaticResource datamanager}" MethodName="GetFilteredStudents"/>
+        <ObjectDataProvider x:Key="GroupList" ObjectInstance="{StaticResource datamanager}" MethodName="GetFilteredGroups"/>
+        <ObjectDataProvider x:Key="MeetingList" ObjectInstance="{StaticResource datamanager}" MethodName="GetFilteredMeetings"/>
+        <ObjectDataProvider x:Key="ClassList" ObjectInstance="{StaticResource datamanager}" MethodName="GetFilteredClasses"/>
     </Application.Resources>
 </Application>
