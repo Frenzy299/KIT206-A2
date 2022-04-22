@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsolePrototype
+namespace GMISwpf
 {
     class Student
     {
@@ -27,7 +27,7 @@ namespace ConsolePrototype
 
         public override string ToString ()
         {
-            return String.Format ("ID: {0}, {1} {2}. {3}", StudentId, GivenName, FamilyName, GroupId);
+            return String.Format ("{0} {1} - {2}, {3}", GivenName, FamilyName, StudentId, GroupId);
         }
     }
 

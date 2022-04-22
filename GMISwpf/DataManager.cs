@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 using MySql.Data.MySqlClient;
 
-namespace ConsolePrototype
+namespace GMISwpf
 {
+    
+    
     class DataManager
     {
         // For connecting to database
@@ -49,18 +51,10 @@ namespace ConsolePrototype
             FilteredGroups = new ObservableCollection<Group> (AllGroups);
         }
 
-        public ObservableCollection<Student> GetViewableStudents()
+        public ObservableCollection<Student> GetFilteredStudents()
         {
             return FilteredStudents;
         }
-
-        //  Steps for retrieving info in database
-        //      1. declare a reader (null)
-        //      2. open connection
-        //      3. create command with the command itself and the connection as inputs
-        //      4. create the reader by using the command.ExecuteReader() function - this is how you create a reader, dont use ' reader = new MySqlDataReader() '
-        //      5. iterate through the reader and extract data into a new Student object.
-        //      6. add the student to a list which is returned at the end
 
         /// <summary>
         /// Returns a list of all students in the database
@@ -89,7 +83,8 @@ namespace ConsolePrototype
                         StudentId = reader.GetInt32 (0),
                         GivenName = reader.GetString (1),
                         FamilyName = reader.GetString (2),
-                        GroupId = reader.IsDBNull (3) ? 0 : reader.GetInt32 (3), // If student is in group NULL then assign group 0 (no group)
+                        GroupId = reader.IsDBNull(3) ? 0 : reader.GetInt32(3), // If student is in group NULL then assign group 0 (no group)
+                        Email = reader.GetString (7)
                     });
                 }
             }
@@ -163,7 +158,12 @@ namespace ConsolePrototype
                            where s.GroupId == groupId
                            select s;
 
-            FilteredStudents = new ObservableCollection<Student> (filtered);
+            FilteredStudents.Clear ();
+
+            foreach(Student s in filtered)
+            {
+                FilteredStudents.Add (s);
+            }
         }
 
         public void FilterMeetingsByGroup (int groupId)
@@ -178,7 +178,7 @@ namespace ConsolePrototype
 
         public void PrintStudents ()
         {
-            foreach (Student s in FilteredStudents)
+            foreach (Student s in AllStudents)
             {
                 Console.WriteLine (s);
             }
@@ -186,7 +186,7 @@ namespace ConsolePrototype
 
         public void PrintGroups ()
         {
-            foreach (Group g in FilteredGroups)
+            foreach (Group g in AllGroups)
             {
                 Console.WriteLine (g);
             }

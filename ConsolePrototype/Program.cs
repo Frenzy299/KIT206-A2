@@ -16,8 +16,11 @@ namespace ConsolePrototype
             DataManager theManager = new DataManager ();
 
             theManager.PrintStudents ();
-            Console.WriteLine ("---------------");
-            theManager.PrintGroups ();
+
+            theManager.FilterStudentsByGroup (1);
+            
+            Console.WriteLine ("");
+            theManager.PrintStudents ();
         }
     }
 

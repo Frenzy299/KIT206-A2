@@ -1,0 +1,10 @@
+﻿<Application x:Class="GMISwpf.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:GMISwpf"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <local:DataManager x:Key="datamanager"/>
+        <ObjectDataProvider x:Key="StudentList" ObjectInstance="{StaticResource datamanager}" MethodName="GetFilteredStudents"/>
+    </Application.Resources>
+</Application>
