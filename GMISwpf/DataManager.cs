@@ -137,9 +137,9 @@ namespace GMISwpf
                     meetings.Add(new Meeting
                     {
                         MeetingId = reader.GetInt32(0),
-                        StartTime = reader.GetDateTime(1),
-                        EndTime = reader.GetDateTime(2),
-                        GroupID = reader.GetInt32(3), // If student is in group NULL then assign group 0 (no group)
+                        StartTime = reader.GetDateTime(3),
+                        EndTime = reader.GetDateTime(4),
+                        GroupID = reader.GetInt32(1), // If student is in group NULL then assign group 0 (no group)
                         Room = reader.GetString(7)
                         //Day = reader.GetEnum(2)
                     });
