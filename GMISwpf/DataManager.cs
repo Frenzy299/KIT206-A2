@@ -43,7 +43,7 @@ namespace GMISwpf
         public DataManager ()
         {
             // Log in to database
-            string connectionString = String.Format ("Database={0};Data Source={1};User Id={2};Password={3}", gmis_database, server, username, password);
+            string connectionString = String.Format ("Database={0};Data Source={1};User Id={2};Password={3};", gmis_database, server, username, password);
 
             // Connection to be opened when data needs to be read
             conn = new MySqlConnection (connectionString);
@@ -51,14 +51,14 @@ namespace GMISwpf
             // Fill the master lists
             AllStudents = LoadStudents ();
             AllGroups = LoadGroups ();
-            //AllMeetings = LoadMeetings;
-            //AllClasses = LoadClasses;
+            AllMeetings = LoadMeetings ();
+            AllClasses = LoadClasses ();
 
             //Filtered lists start as copies of master lists
             FilteredStudents = new ObservableCollection<Student> (AllStudents);
             FilteredGroups = new ObservableCollection<Group> (AllGroups);
-            //FilteredMeetings = new ObservableCollection<Group>(AllMeetings);
-            //FilteredClasses = new ObservableCollection<Group>(AllClasses);
+            FilteredMeetings = new ObservableCollection<Meeting> (AllMeetings);
+            FilteredClasses = new ObservableCollection<Class> (AllClasses);
         }
 
         public ObservableCollection<Student> GetFilteredStudents()
@@ -66,16 +66,31 @@ namespace GMISwpf
             return FilteredStudents;
         }
 
+        public ObservableCollection<Group> GetFilteredGroups ()
+        {
+            return FilteredGroups;
+        }
+
+        public ObservableCollection<Meeting> GetFilteredMeetings ()
+        {
+            return FilteredMeetings;
+        }
+
+        public ObservableCollection<Class> GetFilteredClasses ()
+        {
+            return FilteredClasses;
+        }
+
         public List<Class> LoadClasses()
         {
             MySqlDataReader reader = null;
-            List<Class> classes  = new List<Class>();
+            List<Class> classes = new List<Class>();
 
             try
             {
                 conn.Open();
 
-                MySqlCommand myCommand = new MySqlCommand("select * from classes", conn);
+                MySqlCommand myCommand = new MySqlCommand("select * from class", conn);
 
                 //myCommand.Parameters.AddWithValue("number"
 
@@ -87,12 +102,12 @@ namespace GMISwpf
                     // populate the students list using values found in the reader at this table row
                     classes.Add(new Class
                     {
-                        ClassID = reader.GetInt32(0),
-                        StartTime = reader.GetDateTime(3),
-                        EndTime = reader.GetDateTime(4),
-                        GroupID = reader.GetInt32(1), 
-                        Room = reader.GetString(7)
+                        ClassID = reader.GetInt32 (0),
+                        GroupID = reader.GetInt32 (1),
                         //Day = reader.GetEnum(2)
+                        //StartTime = (DateTime)reader.GetMySqlDateTime(3),
+                        //EndTime = reader.GetDateTime(4),
+                        Room = reader.GetString(5)
 
                     });
                 }
@@ -124,7 +139,7 @@ namespace GMISwpf
             {
                 conn.Open();
 
-                MySqlCommand myCommand = new MySqlCommand("select * from student", conn);
+                MySqlCommand myCommand = new MySqlCommand("select * from meeting", conn);
 
                 //myCommand.Parameters.AddWithValue("number"
 
@@ -133,15 +148,16 @@ namespace GMISwpf
                 // while there is another row to read
                 while (reader.Read())
                 {
-                    // populate the students list using values found in the reader at this table row
+                    
                     meetings.Add(new Meeting
                     {
                         MeetingId = reader.GetInt32(0),
-                        StartTime = reader.GetDateTime(1),
-                        EndTime = reader.GetDateTime(2),
-                        GroupID = reader.GetInt32(3), // If student is in group NULL then assign group 0 (no group)
-                        Room = reader.GetString(7)
+                        GroupID = reader.GetInt32 (1),
                         //Day = reader.GetEnum(2)
+                        //StartTime = reader.GetDateTime(3),
+                        //EndTime = reader.GetDateTime(4),
+                        Room = reader.GetString(5)
+                        
                     });
                 }
             }

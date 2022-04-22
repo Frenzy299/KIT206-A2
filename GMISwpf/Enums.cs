@@ -12,13 +12,13 @@ namespace GMISwpf
         Launceston
     }
 
-    enum Category
+    public enum Category
     {
         Bachelors,
         Masters
     }
 
-    enum Day
+    public enum Day
     {
         Monday,
         Tuesday,

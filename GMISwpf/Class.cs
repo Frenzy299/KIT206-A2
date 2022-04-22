@@ -9,13 +9,14 @@ namespace GMISwpf
     class Class
     {
         public int ClassID { get; set; }
+        public int GroupID { get; set; }
+        public Day Day { get; set; }
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
-        public String Room { get; set; }
-        public Day Day { get; set; }
-        public int GroupID { get; set; }
+        public string Room { get; set; }
+        
 
-        String ToString()
+        public override string ToString()
         {
             return ClassID + ": From " + StartTime + " till " + EndTime + " at " + Room + " on " + Day + ".";
         }
