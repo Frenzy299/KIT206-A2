@@ -35,8 +35,8 @@ namespace GMISwpf
 
         public ObservableCollection<Student> FilteredStudents { get; set; }
         public ObservableCollection<Group> FilteredGroups { get; set; }
-        public ObservableCollection<Student> FilteredMeetings { get; set; }
-        public ObservableCollection<Student> FilteredClasses { get; set; }
+        public ObservableCollection<Meeting> FilteredMeetings { get; set; }
+        public ObservableCollection<Class> FilteredClasses { get; set; }
 
 
         // Constructor: as soon as you create a DataManager object, it will store database info into appropriate list objects

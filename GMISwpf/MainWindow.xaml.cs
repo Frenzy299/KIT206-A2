@@ -43,5 +43,10 @@ namespace GMISwpf
             // Pass selected student to the StackPanel called detailsPanel
             //detailsPanel.DataContext = nameList.SelectedItem;
         }
+
+        private void meetingList_SelectionChanged (object sender, SelectionChangedEventArgs e)
+        {
+            meetingPanel.DataContext = meetingList.SelectedItem;
+        }
     }
 }

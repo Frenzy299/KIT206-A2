@@ -15,7 +15,7 @@ namespace GMISwpf
         public Day Day { get; set; }
         public int GroupID { get; set; }
 
-        String ToString()
+        public override string ToString()
         {
             return MeetingId + ": From " + StartTime + " till " + EndTime + " at " + Room + " on " + Day + ".";
         }
