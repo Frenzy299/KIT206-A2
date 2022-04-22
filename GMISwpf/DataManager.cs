@@ -300,7 +300,7 @@ namespace GMISwpf
                            where s.GroupID == groupId
                            select s;
 
-            FilteredStudents.Clear();
+            FilteredMeetings.Clear();
 
             foreach (Meeting s in filtered)
             {

@@ -30,6 +30,7 @@ namespace GMISwpf
             if (theManager.CurrentStudent != null) studentNameLabel.Content = theManager.CurrentStudent.GivenName;
 
             theManager.FilterStudentsByGroup (theManager.CurrentStudent.GroupId);
+            theManager.FilterMeetingsByGroup(theManager.CurrentStudent.GroupId);
         }
 
         // Only a test
@@ -50,5 +51,7 @@ namespace GMISwpf
         {
             meetingPanel.DataContext = meetingList.SelectedItem;
         }
+
+        
     }
 }
