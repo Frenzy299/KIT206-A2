@@ -41,7 +41,7 @@ namespace GMISwpf
         private void ListBox_SelectionChanged (object sender, SelectionChangedEventArgs e)
         {
             // Pass selected student to the StackPanel called detailsPanel
-            detailsPanel.DataContext = nameList.SelectedItem;
+            //detailsPanel.DataContext = nameList.SelectedItem;
         }
     }
 }
