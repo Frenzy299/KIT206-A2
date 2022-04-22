@@ -56,6 +56,21 @@ namespace GMISwpf
             return FilteredStudents;
         }
 
+        public ObservableCollection<Group> GetFilteredGroups ()
+        {
+            return FilteredGroups;
+        }
+
+        public ObservableCollection<Meeting> GetFilteredMeetings ()
+        {
+            return FilteredMeetings;
+        }
+
+        public ObservableCollection<Class> GetFilteredClasses ()
+        {
+            return FilteredClasses;
+        }
+
         /// <summary>
         /// Returns a list of all students in the database
         /// </summary>
