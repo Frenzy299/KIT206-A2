@@ -24,6 +24,10 @@ namespace GMISwpf
 
         public List<Student> AllStudents { get; set; }
         public List<Group> AllGroups { get; set; }
+        public List<Meeting> AllMeetings { get; set; }
+        public List<Class> AllClasses { get; set; }
+
+        //meetings and class
 
         // Filtered lists: These are changed by methods which will use LINQ
         // The GUI will constantly refer to these to fill in ListBoxes etc.
@@ -31,8 +35,10 @@ namespace GMISwpf
 
         public ObservableCollection<Student> FilteredStudents { get; set; }
         public ObservableCollection<Group> FilteredGroups { get; set; }
+        public ObservableCollection<Student> FilteredMeetings { get; set; }
+        public ObservableCollection<Student> FilteredClasses { get; set; }
 
-        
+
         // Constructor: as soon as you create a DataManager object, it will store database info into appropriate list objects
         public DataManager ()
         {
@@ -45,10 +51,14 @@ namespace GMISwpf
             // Fill the master lists
             AllStudents = LoadStudents ();
             AllGroups = LoadGroups ();
+            //AllMeetings = LoadMeetings;
+            //AllClasses = LoadClasses;
 
             //Filtered lists start as copies of master lists
             FilteredStudents = new ObservableCollection<Student> (AllStudents);
             FilteredGroups = new ObservableCollection<Group> (AllGroups);
+            //FilteredMeetings = new ObservableCollection<Group>(AllMeetings);
+            //FilteredClasses = new ObservableCollection<Group>(AllClasses);
         }
 
         public ObservableCollection<Student> GetFilteredStudents()
@@ -69,6 +79,100 @@ namespace GMISwpf
         public ObservableCollection<Class> GetFilteredClasses ()
         {
             return FilteredClasses;
+        }
+
+        public List<Student> LoadClasses()
+        {
+            MySqlDataReader reader = null;
+            List<Student> students = new List<Student>();
+
+            try
+            {
+                conn.Open();
+
+                MySqlCommand myCommand = new MySqlCommand("select * from student", conn);
+
+                //myCommand.Parameters.AddWithValue("number"
+
+                reader = myCommand.ExecuteReader();
+
+                // while there is another row to read
+                while (reader.Read())
+                {
+                    // populate the students list using values found in the reader at this table row
+                    students.Add(new Student
+                    {
+                        StudentId = reader.GetInt32(0),
+                        GivenName = reader.GetString(1),
+                        FamilyName = reader.GetString(2),
+                        GroupId = reader.IsDBNull(3) ? 0 : reader.GetInt32(3), // If student is in group NULL then assign group 0 (no group)
+                        Email = reader.GetString(7)
+                    });
+                }
+            }
+            finally
+            {
+                // close the reader
+                if (reader != null)
+                {
+                    reader.Close();
+                }
+
+                // Close the connection
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+            }
+
+            return students;
+        }
+
+        public List<Student> LoadMeetings()
+        {
+            MySqlDataReader reader = null;
+            List<Student> students = new List<Student>();
+
+            try
+            {
+                conn.Open();
+
+                MySqlCommand myCommand = new MySqlCommand("select * from student", conn);
+
+                //myCommand.Parameters.AddWithValue("number"
+
+                reader = myCommand.ExecuteReader();
+
+                // while there is another row to read
+                while (reader.Read())
+                {
+                    // populate the students list using values found in the reader at this table row
+                    students.Add(new Student
+                    {
+                        StudentId = reader.GetInt32(0),
+                        GivenName = reader.GetString(1),
+                        FamilyName = reader.GetString(2),
+                        GroupId = reader.IsDBNull(3) ? 0 : reader.GetInt32(3), // If student is in group NULL then assign group 0 (no group)
+                        Email = reader.GetString(7)
+                    });
+                }
+            }
+            finally
+            {
+                // close the reader
+                if (reader != null)
+                {
+                    reader.Close();
+                }
+
+                // Close the connection
+                if (conn != null)
+                {
+                    conn.Close();
+                }
+            }
+
+            return students;
         }
 
         /// <summary>
