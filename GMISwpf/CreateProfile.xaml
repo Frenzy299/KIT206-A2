@@ -1,0 +1,45 @@
+﻿<Page x:Class="GMISwpf.CreateProfile"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:GMISwpf"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="CreateProfile">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="239*"/>
+            <ColumnDefinition Width="283*"/>
+            <ColumnDefinition Width="278*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="241*"/>
+            <RowDefinition Height="209*"/>
+        </Grid.RowDefinitions>
+        <Label Content="Create Profile" HorizontalAlignment="Left" Height="45" Margin="24,15,0,0" VerticalAlignment="Top" Width="193"/>
+        <TextBlock x:Name="UserDetails" HorizontalAlignment="Left" Height="175" Margin="34,58,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="183"><Run Text="You are:"/><LineBreak/><Run/><LineBreak/><Run Text="Mr Finlay Delanty"/><LineBreak/><Run Text="38297043"/><LineBreak/><Run/><LineBreak/><Run Text="hobart"/><LineBreak/><Run/><LineBreak/><Run Text="member of:"/><LineBreak/><Run Text="group"/><LineBreak/><Run/><LineBreak/><Run Text="Email"/></TextBlock>
+        <Label Content="Select your title" Grid.Column="1" HorizontalAlignment="Left" Height="26" Margin="31,15,0,0" VerticalAlignment="Top" Width="95"/>
+        <ComboBox x:Name="Title" Text="Select your title" Grid.Column="1" HorizontalAlignment="Left" Height="25" Margin="31,46,0,0" VerticalAlignment="Top" Width="219" SelectionChanged="Title_SelectionChanged"/>
+        <RadioButton x:Name="Hobart" Content="Hobart" Grid.Column="1" HorizontalAlignment="Left" Height="18" Margin="31,163,0,0" VerticalAlignment="Top" Width="124"/>
+        <RadioButton x:Name="Launceston" Content="Launceston" Grid.Column="1" HorizontalAlignment="Left" Height="20" Margin="31,189,0,0" VerticalAlignment="Top" Width="124"/>
+        <Label Content="Campus" Grid.Column="1" HorizontalAlignment="Left" Height="26" Margin="31,137,0,0" VerticalAlignment="Top" Width="95"/>
+        <Button x:Name="AddPhoto" Content="Add photo..." Grid.Column="2" HorizontalAlignment="Left" Height="28" Margin="95,118,0,0" VerticalAlignment="Top" Width="80" RenderTransformOrigin="0.5,0.5" Click="AddPhoto_Click">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.902"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <Rectangle x:Name="ProfilePicture" Grid.Column="2" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="80" Margin="95,33,0,0" Stroke="Black" VerticalAlignment="Top" Width="80"/>
+        <TextBox x:Name="Email" HorizontalAlignment="Center" Height="21" Margin="31,27,50,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="202" Grid.Column="1" Text="Email" Grid.Row="1"/>
+        <Label Content="Email" HorizontalAlignment="Left" Height="24" Margin="31,3,0,0" VerticalAlignment="Top" Width="201" Grid.Column="1" Grid.Row="1"/>
+        <TextBox x:Name="ConfirmEmail" HorizontalAlignment="Center" Height="21" Margin="31,53,50,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="202" Grid.Column="1" Grid.Row="1" Text="Confirm email" TextChanged="ConfirmEmail_changed"/>
+        <Button x:Name="Submit" Content="Submit" Grid.Column="2" HorizontalAlignment="Left" Height="31" Margin="131,53,0,0" Grid.Row="1" VerticalAlignment="Top" Width="102" Click="Submit_Click"/>
+        <Button x:Name="Save" Content="Save" Grid.Column="2" HorizontalAlignment="Left" Height="31" Margin="24,53,0,0" Grid.Row="1" VerticalAlignment="Top" Width="102" Click="Save_Click"/>
+    </Grid>
+</Page>

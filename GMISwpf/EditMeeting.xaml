@@ -1,0 +1,29 @@
+﻿<Page x:Class="GMISwpf.EditMeeting"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:GMISwpf"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="EditMeeting">
+
+    <Grid>
+        <Label x:Name="GroupName" Content="Group name" HorizontalAlignment="Left" Height="41" Margin="6,6,0,0" VerticalAlignment="Top" Width="173" FontWeight="Bold" FontSize="16"/>
+        <Label x:Name="MeetingDetails" Content="Current meeting details&#xA;ID: 56378" HorizontalAlignment="Left" Height="60" Margin="10,59,0,0" VerticalAlignment="Top" Width="169"/>
+        <ComboBox x:Name="Day" HorizontalAlignment="Left" Height="23" Margin="149,137,0,0" VerticalAlignment="Top" Width="47"/>
+        <ComboBox x:Name="Month" HorizontalAlignment="Left" Height="23" Margin="211,137,0,0" VerticalAlignment="Top" Width="47"/>
+        <ComboBox x:Name="StartAMPM" HorizontalAlignment="Left" Height="23" Margin="387,119,0,0" VerticalAlignment="Top" Width="55"/>
+        <Label Content="until" HorizontalAlignment="Left" Height="28" Margin="347,154,0,0" VerticalAlignment="Top" Width="36"/>
+        <ComboBox x:Name="EndAMPM" HorizontalAlignment="Left" Height="23" Margin="387,185,0,0" VerticalAlignment="Top" Width="55"/>
+        <TextBox x:Name="Room" HorizontalAlignment="Left" Height="24" Margin="10,240,0,0" TextWrapping="Wrap" Text="Room" VerticalAlignment="Top" Width="200"/>
+        <Label Content="Room" HorizontalAlignment="Left" Height="28" Margin="10,207,0,0" VerticalAlignment="Top" Width="127"/>
+        <TextBlock x:Name="MeetingDateTime" HorizontalAlignment="Left" Height="48" Margin="10,119,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140"><Run Text="13th April"/><LineBreak/><Run Text="1:30PM - 2:30PM"/></TextBlock>
+        <Button x:Name="SubmitChanges" Content="Submit changes" HorizontalAlignment="Left" Height="28" Margin="10,284,0,0" VerticalAlignment="Top" Width="103" Click="Submit_Click"/>
+        <Button x:Name="CancelMeeting" Content="Cancel meeting" HorizontalAlignment="Left" Height="28" Margin="118,284,0,0" VerticalAlignment="Top" Width="103" Click="CancelMeeting_Click"/>
+        <ComboBox x:Name="StartHours" HorizontalAlignment="Left" Height="23" Margin="299,119,0,0" VerticalAlignment="Top" Width="29"/>
+        <ComboBox x:Name="StartMinutes" HorizontalAlignment="Left" Height="23" Margin="347,119,0,0" VerticalAlignment="Top" Width="29"/>
+        <ComboBox x:Name="EndHours" HorizontalAlignment="Left" Height="23" Margin="299,185,0,0" VerticalAlignment="Top" Width="29"/>
+        <ComboBox x:Name="EndMinutes" HorizontalAlignment="Left" Height="23" Margin="347,185,0,0" VerticalAlignment="Top" Width="29"/>
+    </Grid>
+</Page>

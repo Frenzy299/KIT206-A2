@@ -98,7 +98,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ChangeGroup.xaml.cs">
+      <DependentUpon>ChangeGroup.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Class.cs" />
+    <Compile Include="CreateProfile.xaml.cs">
+      <DependentUpon>CreateProfile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EditGroup.xaml.cs">
+      <DependentUpon>EditGroup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EditMeeting.xaml.cs">
+      <DependentUpon>EditMeeting.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Enums.cs" />
     <Compile Include="Group.cs" />
     <Compile Include="Home.xaml.cs">
@@ -109,6 +121,22 @@
     <Compile Include="UserSelection.xaml.cs">
       <DependentUpon>UserSelection.xaml</DependentUpon>
     </Compile>
+    <Page Include="ChangeGroup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CreateProfile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditGroup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditMeeting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Home.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
