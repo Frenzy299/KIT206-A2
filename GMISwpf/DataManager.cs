@@ -109,7 +109,7 @@ namespace GMISwpf
                     {
                         ClassID = reader.GetInt32 (0),
                         GroupID = reader.GetInt32 (1),
-                        //Day = reader.GetEnum(2)
+                        Day = ParseEnum<Day> (reader.GetString (2)),
                         //StartTime = (DateTime)reader.GetMySqlDateTime(3),
                         //EndTime = reader.GetDateTime(4),
                         Room = reader.GetString(5)
@@ -279,6 +279,16 @@ namespace GMISwpf
             return groups;
         }
 
+        public void ReloadAll()
+        {
+            // method for updating the lists when the database was changed
+
+            // 1. call all the LoadX() methods on the master lists to update them
+            //
+            // 2. only call ReloadAll() when the page is about to change, so that the filtered lists get updated too (filters are called on page changes).
+            //      or find a way to update them while maintaining the filter
+        }
+
         // Call this method when the GUI needs to display a subset of students
         public void FilterStudentsByGroup (int groupId)
         {
@@ -313,6 +323,7 @@ namespace GMISwpf
         {
             var filtered = from s in AllGroups
                            where s.GroupName == name
+                           //^ change to 'groupname contains name' somehow
                            select s;
 
             FilteredGroups.Clear();
@@ -321,9 +332,23 @@ namespace GMISwpf
             {
                 FilteredGroups.Add(s);
             }
-            // Change FilteredGroups to only contain groups containing the 'name' string
         }
 
+        public void FilterClassesByGroup (int groupId)
+        {
+            var filtered = from s in AllClasses
+                           where s.GroupID == groupId
+                           select s;
+
+            FilteredClasses.Clear ();
+
+            foreach (Class s in filtered)
+            {
+                FilteredClasses.Add (s);
+            }
+        }
+
+        /* leftover from the console prototype
         public void PrintStudents ()
         {
             foreach (Student s in AllStudents)
@@ -338,6 +363,6 @@ namespace GMISwpf
             {
                 Console.WriteLine (g);
             }
-        }
+        }*/
     }
 }

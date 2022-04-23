@@ -30,7 +30,10 @@ namespace GMISwpf
             if (theManager.CurrentStudent != null) studentNameLabel.Content = theManager.CurrentStudent.GivenName;
 
             theManager.FilterStudentsByGroup (theManager.CurrentStudent.GroupId);
-            theManager.FilterMeetingsByGroup(theManager.CurrentStudent.GroupId);
+            theManager.FilterMeetingsByGroup (theManager.CurrentStudent.GroupId);
+            theManager.FilterClassesByGroup (theManager.CurrentStudent.GroupId);
+
+            classPanel.DataContext = theManager.FilteredClasses[0];
         }
 
         // Only a test

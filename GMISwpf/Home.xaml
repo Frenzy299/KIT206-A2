@@ -23,9 +23,9 @@
             <StackPanel.Background>
                 <SolidColorBrush Color="Black" Opacity="0.1"/>
             </StackPanel.Background>
-            <Label Content="Day"/>
+            <Label Content="{Binding Path=Day}"/>
             <Label Content="Time"/>
-            <Label Content="Room"/>
+            <Label Content="{Binding Path=Room}"/>
         </StackPanel>
         <Label Content="Class" HorizontalAlignment="Left" Height="27" Margin="32,228,0,0" VerticalAlignment="Top" Width="172"/>
         <ListBox x:Name="meetingList" Height="108" Margin="24,76,7.294,0" VerticalAlignment="Top" SelectionChanged="meetingList_SelectionChanged"
