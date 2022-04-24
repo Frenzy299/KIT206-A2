@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.Win32;
 
 namespace GMISwpf
 {
@@ -80,6 +81,13 @@ namespace GMISwpf
         {
             //open file browser
             //display image in ProfilePicture
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Image files (*.png;*.jpeg)|*.png;*.jpeg|All files (*.*)|*.*";
+            if (openFileDialog.ShowDialog() == true)
+            {
+                Uri imageUri = new Uri(openFileDialog.FileName);
+                ProfilePicture.Source = new BitmapImage(imageUri);
+            }
         }
     }
 }
