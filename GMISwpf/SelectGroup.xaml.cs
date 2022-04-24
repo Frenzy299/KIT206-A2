@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace GMISwpf
 {
     /// <summary>
-    /// Interaction logic for ChangeGroup.xaml
+    /// Interaction logic for SelectGroup.xaml
     /// </summary>
-    public partial class ChangeGroup : Page
+    public partial class SelectGroup : Page
     {
-        public ChangeGroup()
+        public SelectGroup()
         {
             InitializeComponent();
         }
@@ -39,13 +39,6 @@ namespace GMISwpf
             //add group to database with name as text displayed in GroupName
             //change the current group of all students selected in StudentList to the new group
             //return home
-            MainWindow objMainWindow = (MainWindow)Window.GetWindow(this);
-
-            objMainWindow.Content = new Home();
-        }
-
-        private void Back_Click(object sender, RoutedEventArgs e)
-        {
             MainWindow objMainWindow = (MainWindow)Window.GetWindow(this);
 
             objMainWindow.Content = new Home();

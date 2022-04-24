@@ -1,4 +1,4 @@
-﻿<Page x:Class="GMISwpf.ChangeGroup"
+﻿<Page x:Class="GMISwpf.SelectGroup"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:GMISwpf"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="ChangeGroup">
+      Title="SelectGroup">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -24,7 +24,6 @@
         <TextBox x:Name="GroupName" HorizontalAlignment="Left" Height="22" Margin="26,88,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="176" Grid.Column="1"/>
         <Label Content="Group name" HorizontalAlignment="Left" Height="29" Margin="26,59,0,0" VerticalAlignment="Top" Width="138" Grid.Column="1"/>
         <Label Content="Add members" HorizontalAlignment="Left" Height="27" Margin="26,121,0,0" VerticalAlignment="Top" Width="165" Grid.Column="1"/>
-        <Button Content="Back" HorizontalAlignment="Left" Height="25" Margin="26,377,0,0" VerticalAlignment="Top" Width="58" Click="Back_Click"/>
 
     </Grid>
 </Page>
