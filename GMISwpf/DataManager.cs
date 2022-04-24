@@ -289,14 +289,14 @@ namespace GMISwpf
             //      or find a way to update them while maintaining the filter
         }
 
-        public void UpdateStudent (int id, string newTitle, Campus newCampus, string newPhone, string newEmail, Category newCategory)
+        public void UpdateStudent (int id, string newTitle, string newCampus, string newPhone, string newEmail, string newCategory)
         {
             // insert into database
             try
             {
                 conn.Open ();
 
-                string command = String.Format ("UPDATE student WHERE student_id={0} SET title={1}, campus={2}, phone={3}, email={4}, category={5}",
+                string command = String.Format ("UPDATE student WHERE student_id={0} SET title='{1}', campus='{2}', phone='{3}', email='{4}', category='{5}'",
                                                    id, newTitle, newCampus, newPhone, newEmail, newCategory);
 
                 MySqlCommand myCommand = new MySqlCommand (command, conn);

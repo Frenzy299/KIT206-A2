@@ -20,31 +20,60 @@ namespace GMISwpf
     /// </summary>
     public partial class CreateProfile : Page
     {
+        private DataManager theManager;
+
         public CreateProfile()
         {
             InitializeComponent();
-            Continue.IsEnabled = false;
+            theManager = (DataManager)Application.Current.FindResource ("datamanager");
+            //Continue.IsEnabled = false;
 
             Title.Items.Add("Mr");
             Title.Items.Add("Mrs");
             Title.Items.Add("Dr");
             Title.Items.Add("Other");
+
+            Campus.Items.Add ("Hobart");
+            Campus.Items.Add ("Launceston");
+
+            Category.Items.Add ("Bachelors");
+            Category.Items.Add ("Masters");
         }
 
         private void ConfirmEmail_changed(object sender, TextChangedEventArgs e)
         {
-            if (Email.Text.Contains(ConfirmEmail.Text)) { Continue.IsEnabled = true; }
+            //if (Email.Text.Contains(ConfirmEmail.Text)) { Continue.IsEnabled = true; }
         }
 
         private void Continue_Click(object sender, RoutedEventArgs e)
         {
             //call UpdateStudent()
+            int studentToUpdate = theManager.CurrentStudent.GroupId;
+            string newTitle = Title.Text;
+            string newCampus = Campus.Text;
+            string newPhone = Phone.Text;
+            string newEmail = Email.Text;
+            string newCategory = Category.Text;
 
+            // if details arent valid
+            if (Email.Text != ConfirmEmail.Text)
+            {
+                MessageBox.Show ("FAIL");
+            }
+            else
+            {
+                //theManager.UpdateStudent (studentToUpdate, newTitle, newCampus, newPhone, newEmail, newCategory);
 
-            //move to group selection
-            MainWindow objMainWindow = (MainWindow)Window.GetWindow(this);
+                //move to group selection
+                MainWindow objMainWindow = (MainWindow)Window.GetWindow (this);
 
-            objMainWindow.Content = new SelectGroup();
+                objMainWindow.Content = new SelectGroup ();
+            }
+
+            
+            
+
+            
         }
 
         private void AddPhoto_Click(object sender, RoutedEventArgs e)
