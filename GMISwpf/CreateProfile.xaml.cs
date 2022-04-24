@@ -42,8 +42,6 @@ namespace GMISwpf
 
 
             //move to group selection
-            //commit changes to database from information displayed in Title, Hobart/Launceston, Email and ProfilePicture
-            //continue to joining or creating a group
             MainWindow objMainWindow = (MainWindow)Window.GetWindow(this);
 
             objMainWindow.Content = new SelectGroup();
