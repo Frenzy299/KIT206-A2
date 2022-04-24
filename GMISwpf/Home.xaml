@@ -17,8 +17,8 @@
         <ListBox x:Name="nameList" HorizontalAlignment="Left" Height="399" Margin="2.706,10,0,0" VerticalAlignment="Top" Width="219"
             ItemsSource="{Binding Source={StaticResource StudentList}}" SelectionChanged="ListBox_SelectionChanged" Grid.Column="2"/>
         <Label Content="Group name" HorizontalAlignment="Left" Height="31" Margin="32,53,0,0" VerticalAlignment="Top" Width="154" FontSize="16" FontWeight="Bold"/>
-        <Button Content="Edit group" HorizontalAlignment="Left" Height="36" Margin="32,116,0,0" VerticalAlignment="Top" Width="149"/>
-        <Button Content="Change group" HorizontalAlignment="Left" Height="32" Margin="32,163,0,0" VerticalAlignment="Top" Width="149"/>
+        <Button x:Name="EditGroup" Content="Edit group" HorizontalAlignment="Left" Height="36" Margin="32,116,0,0" VerticalAlignment="Top" Width="149" Click="EditGroup_Click"/>
+        <Button x:Name="ChangeGroup" Content="Change group" HorizontalAlignment="Left" Height="32" Margin="32,163,0,0" VerticalAlignment="Top" Width="149" Click="ChangeGroup_Click"/>
         <StackPanel x:Name="classPanel" HorizontalAlignment="Left" Height="103" Margin="32,255,0,0" VerticalAlignment="Top" Width="172">
             <StackPanel.Background>
                 <SolidColorBrush Color="Black" Opacity="0.1"/>
@@ -41,7 +41,7 @@
             <Label Content="{Binding Path=Room}"/>
         </StackPanel>
         <Label Content="Meeting details" HorizontalAlignment="Left" Height="27" Margin="85,228,0,0" VerticalAlignment="Top" Width="172" Grid.Column="1"/>
-        <Button Content="Add" HorizontalAlignment="Left" Height="20" Margin="228,52,0,0" VerticalAlignment="Top" Width="38" Grid.Column="1"/>
+        <Button x:Name="AddMeeting" Content="Add" HorizontalAlignment="Left" Height="20" Margin="228,52,0,0" VerticalAlignment="Top" Width="38" Grid.Column="1" Click="AddMeeting_Click"/>
         <Label x:Name="studentNameLabel" Content="User name here" HorizontalAlignment="Left" Height="32" Margin="32,16,0,0" VerticalAlignment="Top" Width="172"/>
 
     </Grid>

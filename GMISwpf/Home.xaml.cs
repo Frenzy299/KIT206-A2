@@ -55,6 +55,23 @@ namespace GMISwpf
             meetingPanel.DataContext = meetingList.SelectedItem;
         }
 
-        
+        private void ChangeGroup_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow objMainWindow = (MainWindow)Window.GetWindow(this);
+
+            objMainWindow.Content = new ChangeGroup();
+        }
+
+        private void EditGroup_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow objMainWindow = (MainWindow)Window.GetWindow(this);
+
+            objMainWindow.Content = new EditGroup();
+        }
+
+        private void AddMeeting_Click(object sender, RoutedEventArgs e)
+        {
+            //open AddMeeting
+        }
     }
 }
