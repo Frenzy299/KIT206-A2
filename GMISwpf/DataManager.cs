@@ -43,6 +43,7 @@ namespace GMISwpf
         public ObservableCollection<Class> FilteredClasses { get; set; }
 
         public Student CurrentStudent { get; set; }
+        public Meeting CurrentMeeting { get; set; }
 
         // Constructor: as soon as you create a DataManager object, it will store database info into appropriate list objects
         public DataManager ()
@@ -294,6 +295,26 @@ namespace GMISwpf
 
             // 2. only call ReloadAll() when the page is about to change, so that the filtered lists get updated too (filters are called on page changes).
             //      or find a way to update them while maintaining the filter
+        }
+        public void UpdateMeeting(int meetingID, Day day, string room)
+        {
+            // insert into database
+            try
+            {
+                conn.Open();
+
+                string command = String.Format("UPDATE meeting SET day='{1}', room='{2}', WHERE meeting_id={0}",
+                                                   meetingID, day, room);
+                Console.WriteLine(command);
+                MySqlCommand myCommand = new MySqlCommand(command, conn);
+
+                myCommand.ExecuteNonQuery();
+            }
+            finally
+            {
+                conn.Close();
+            }
+
         }
 
         public void UpdateStudent (int id, string newTitle, string newCampus, string newPhone, string newEmail, string newCategory)

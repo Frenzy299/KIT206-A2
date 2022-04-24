@@ -20,12 +20,19 @@ namespace GMISwpf
     /// </summary>
     public partial class EditMeeting : Page
     {
+        private DataManager theManager;
         public EditMeeting()
         {
             InitializeComponent();
+            theManager = (DataManager)Application.Current.FindResource("datamanager");
 
-            for (int i = 1; i <= 31; i++) { Day.Items.Add(i); }
-            for (int i = 1; i <= 12; i++) { Month.Items.Add(i); }
+            Day.Items.Add("Monday");
+            Day.Items.Add("Tuesday");
+            Day.Items.Add("Wednesday");
+            Day.Items.Add("Thursday");
+            Day.Items.Add("Friday");
+            Day.Items.Add("Saturday");
+            Day.Items.Add("Sunday");
             for (int i = 1; i <= 12; i++) { StartHours.Items.Add(i); EndHours.Items.Add(i); }
             for (int i = 0; i <= 59; i++) { StartMinutes.Items.Add(i); EndMinutes.Items.Add(i); }
             StartAMPM.Items.Add("AM");
@@ -44,8 +51,18 @@ namespace GMISwpf
             //change start time of current meeting to the time selected in StartHour, StartMinutes and StartAMPM
             //change start time of current meeting to the time selected in EndHour, EndMinutes and EndAMPM
             //change room of current meeting to room displayed in Room
+ 
+            string newDay = Day.Text;
+            string newRoom = Room.Text;
+            int meetingToUpdate = theManager.CurrentMeeting.MeetingId;
 
             
+
+            theManager.UpdateMeeting(meetingToUpdate, newDay , newRoom);
+            //theManager.CurrentMeeting.MeetingId = newGroupId;
+            theManager.ReloadAll();
+
+
             MainWindow objMainWindow = (MainWindow)Window.GetWindow(this);
 
             objMainWindow.Content = new Home();
@@ -58,6 +75,11 @@ namespace GMISwpf
             MainWindow objMainWindow = (MainWindow)Window.GetWindow(this);
 
             objMainWindow.Content = new Home();
+        }
+
+        private void Room_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }
