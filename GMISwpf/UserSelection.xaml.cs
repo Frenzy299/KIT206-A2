@@ -28,6 +28,7 @@ namespace GMISwpf
             goButton.IsEnabled = false;
 
             theManager = (DataManager)Application.Current.FindResource ("datamanager");
+            theManager.UnfilterStudents ();
         }
 
         // "Go" clicked
@@ -51,6 +52,18 @@ namespace GMISwpf
         private void studentList_SelectionChanged (object sender, SelectionChangedEventArgs e)
         {
             goButton.IsEnabled = true;
+            Student selectedStudent = (Student)studentList.SelectedItem;
+
+            // this was causing crashing so fixing it later
+            /*if (selectedStudent.GroupId != 0)
+            {
+                goButton.Content = "Log in as " + selectedStudent.GivenName + " " + selectedStudent.FamilyName;
+            }
+            else // group 0
+            {
+                goButton.Content = "Create profile for " + selectedStudent.GivenName + " " + selectedStudent.FamilyName;
+            }*/
+
         }
     }
 }

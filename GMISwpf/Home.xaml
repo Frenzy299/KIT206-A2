@@ -14,11 +14,11 @@
             <ColumnDefinition Width="321*"/>
             <ColumnDefinition Width="240*"/>
         </Grid.ColumnDefinitions>
-        <ListBox x:Name="nameList" HorizontalAlignment="Left" Height="399" Margin="2.706,10,0,0" VerticalAlignment="Top" Width="219"
-            ItemsSource="{Binding Source={StaticResource StudentList}}" SelectionChanged="ListBox_SelectionChanged" Grid.Column="2"/>
-        <Label Content="Group name" HorizontalAlignment="Left" Height="31" Margin="32,53,0,0" VerticalAlignment="Top" Width="154" FontSize="16" FontWeight="Bold"/>
-        <Button x:Name="EditGroup" Content="Edit group" HorizontalAlignment="Left" Height="36" Margin="32,116,0,0" VerticalAlignment="Top" Width="149" Click="EditGroup_Click"/>
-        <Button x:Name="ChangeGroup" Content="Change group" HorizontalAlignment="Left" Height="32" Margin="32,163,0,0" VerticalAlignment="Top" Width="149" Click="ChangeGroup_Click"/>
+        <ListBox x:Name="nameList" HorizontalAlignment="Left" Height="267" Margin="3,91,0,0" VerticalAlignment="Top" Width="219"
+            ItemsSource="{Binding Source={StaticResource StudentList}}" SelectionChanged="ListBox_SelectionChanged" Grid.Column="2" FontSize="16"/>
+        <Label Content="Group name" HorizontalAlignment="Left" Height="31" Margin="32,48,0,0" VerticalAlignment="Top" Width="154" FontSize="16" FontWeight="Bold"/>
+        <Button x:Name="EditGroup" Content="Edit group" HorizontalAlignment="Left" Height="26" Margin="32,116,0,0" VerticalAlignment="Top" Width="149" Click="EditGroup_Click"/>
+        <Button x:Name="ChangeGroup" Content="Change group" HorizontalAlignment="Left" Height="28" Margin="32,147,0,0" VerticalAlignment="Top" Width="149" Click="ChangeGroup_Click"/>
         <StackPanel x:Name="classPanel" HorizontalAlignment="Left" Height="103" Margin="32,255,0,0" VerticalAlignment="Top" Width="172">
             <StackPanel.Background>
                 <SolidColorBrush Color="Black" Opacity="0.1"/>
@@ -28,10 +28,10 @@
             <Label Content="{Binding Path=Room}"/>
         </StackPanel>
         <Label Content="Class" HorizontalAlignment="Left" Height="27" Margin="32,228,0,0" VerticalAlignment="Top" Width="172"/>
-        <ListBox x:Name="meetingList" Height="108" Margin="24,76,7.294,0" VerticalAlignment="Top" SelectionChanged="meetingList_SelectionChanged"
+        <ListBox x:Name="meetingList" Height="108" Margin="9,118,11,0" VerticalAlignment="Top" SelectionChanged="meetingList_SelectionChanged"
             ItemsSource="{Binding Source={StaticResource MeetingList}}" Grid.Column="1"/>
-        <Label Content="Upcoming meetings" HorizontalAlignment="Left" Height="27" Margin="71,49,0,0" VerticalAlignment="Top" Width="195" Grid.Column="1"/>
-        <StackPanel x:Name="meetingPanel" HorizontalAlignment="Left" Height="103" Margin="85,255,0,0" VerticalAlignment="Top" Width="172" Grid.Column="1">
+        <Label Content="Upcoming meetings" HorizontalAlignment="Left" Height="27" Margin="70,91,0,0" VerticalAlignment="Top" Width="195" Grid.Column="1"/>
+        <StackPanel x:Name="meetingPanel" HorizontalAlignment="Left" Height="103" Margin="10,295,0,0" VerticalAlignment="Top" Width="172" Grid.Column="1">
             <StackPanel.Background>
                 <SolidColorBrush Color="Black" Opacity="0.1"/>
             </StackPanel.Background>
@@ -40,10 +40,13 @@
             <Label Content="End"/>
             <Label Content="{Binding Path=Room}"/>
         </StackPanel>
-        <Label Content="Meeting details" HorizontalAlignment="Left" Height="27" Margin="85,228,0,0" VerticalAlignment="Top" Width="172" Grid.Column="1"/>
-        <Button x:Name="AddMeeting" Content="Add" HorizontalAlignment="Left" Height="20" Margin="228,52,0,0" VerticalAlignment="Top" Width="38" Grid.Column="1" Click="AddMeeting_Click"/>
-        <Label x:Name="studentNameLabel" Content="User name here" HorizontalAlignment="Left" Height="32" Margin="32,16,0,0" VerticalAlignment="Top" Width="172"/>
-        <Button x:Name="EditMeeting" Content="Edit" HorizontalAlignment="Left" Height="20" Margin="85,363,0,0" VerticalAlignment="Top" Width="38" Grid.Column="1" Click="EditMeeting_Click"/>
+        <Label Content="Meeting details" HorizontalAlignment="Left" Height="27" Margin="10,268,0,0" VerticalAlignment="Top" Width="172" Grid.Column="1"/>
+        <Button x:Name="AddMeeting" Content="Add" HorizontalAlignment="Left" Height="20" Margin="227,94,0,0" VerticalAlignment="Top" Width="38" Grid.Column="1" Click="AddMeeting_Click"/>
+        <Label x:Name="studentNameLabel" Content="User name here" HorizontalAlignment="Left" Height="32" Margin="96,16,0,0" VerticalAlignment="Top" Width="172" Grid.ColumnSpan="2"/>
+        <Button x:Name="EditMeeting" Content="Edit" HorizontalAlignment="Left" Height="20" Margin="10,403,0,0" VerticalAlignment="Top" Width="38" Grid.Column="1" Click="EditMeeting_Click"/>
+        <Button x:Name="memberDetailsButton" Content="View member details" Grid.Column="2" HorizontalAlignment="Left" Height="28" Margin="3,363,0,0" VerticalAlignment="Top" Width="219" Click="memberDetailsButton_Click"/>
+        <Label Content="Group members" HorizontalAlignment="Left" Height="27" Margin="0,64,0,0" VerticalAlignment="Top" Width="195" Grid.Column="2"/>
+        <Button x:Name="logOutButton" Content="Log out" HorizontalAlignment="Left" Height="27" Margin="20,16,0,0" VerticalAlignment="Top" Width="71" Click="LogOut_Click"/>
 
     </Grid>
 </Page>

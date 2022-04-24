@@ -20,10 +20,7 @@ namespace GMISwpf
 
         private static MySqlConnection conn;
 
-        public static T ParseEnum<T>(string value)
-        {
-            return (T)Enum.Parse(typeof(T), value);
-        }
+        
         // Master lists: Populate these by accessing database using SQL
 
         public List<Student> AllStudents { get; set; }
@@ -69,6 +66,13 @@ namespace GMISwpf
             FilteredClasses = new ObservableCollection<Class> (AllClasses);
         }
 
+        // Provided by UTAS, convert string to appropriate Enum value
+        public static T ParseEnum<T> (string value)
+        {
+            return (T)Enum.Parse (typeof (T), value);
+        }
+
+        // Get methods, for data bindings
         public ObservableCollection<Student> GetFilteredStudents()
         {
             return FilteredStudents;
@@ -89,6 +93,7 @@ namespace GMISwpf
             return FilteredClasses;
         }
 
+        // Load methods fill the master lists with data from the gmis database
         public List<Class> LoadClasses()
         {
             MySqlDataReader reader = null;
@@ -161,7 +166,7 @@ namespace GMISwpf
                     {
                         MeetingId = reader.GetInt32(0),
                         GroupID = reader.GetInt32 (1),
-                        Day = ParseEnum<Day>(reader.GetString(2)),
+                        Day = ParseEnum<Day>(reader.GetString (2)),
                         //StartTime = reader.GetDateTime(3),
                         //EndTime = reader.GetDateTime(4),
                         Room = reader.GetString(5)
@@ -215,6 +220,8 @@ namespace GMISwpf
                         GivenName = reader.GetString (1),
                         FamilyName = reader.GetString (2),
                         GroupId = reader.IsDBNull(3) ? 0 : reader.GetInt32(3), // If student is in group NULL then assign group 0 (no group)
+                        //Campus = ParseEnum<Campus>(reader.GetString (5)),
+                        Phone = reader.GetString(6),
                         Email = reader.GetString (7)
                     });
                 }
@@ -282,9 +289,10 @@ namespace GMISwpf
             return groups;
         }
 
+        // method for updating the lists, to be used after the database has been modifed
         public void ReloadAll()
         {
-            // method for updating the lists when the database was changed
+            
 
             // 1. call all the LoadX() methods on the master lists to update them
 
@@ -293,21 +301,21 @@ namespace GMISwpf
             AllMeetings = LoadMeetings ();
             AllClasses = LoadClasses ();
 
-            // 2. only call ReloadAll() when the page is about to change, so that the filtered lists get updated too (filters are called on page changes).
-            //      or find a way to update them while maintaining the filter
+            // 2. keep in mind at the moment the observable collections will not update until a 'Filter X by Y' method is called.
         }
         public void insertMeeting(int meetingid, int groupid, string day, string start, string end, string room)
         {
             // insert into database
             try
             {
-                conn.Open();
+                conn.Open ();
 
                 string command = String.Format("INSERT INTO meeting VALUES ('" + meetingid + "', '" + groupid + "', '" + day + "', '" + start + "', '"+ end + "', '" + room + "')");
                 //Console.WriteLine(command);
                 MySqlCommand myCommand = new MySqlCommand(command, conn);
 
                 myCommand.ExecuteNonQuery();
+                Console.WriteLine ("DATABASE MODIFIED");
             }
             finally
             {
@@ -328,6 +336,7 @@ namespace GMISwpf
                 MySqlCommand myCommand = new MySqlCommand(command, conn);
 
                 myCommand.ExecuteNonQuery();
+                Console.WriteLine ("DATABASE MODIFIED");
             }
             finally
             {
@@ -388,6 +397,16 @@ namespace GMISwpf
             FilteredStudents.Clear ();
 
             foreach(Student s in filtered)
+            {
+                FilteredStudents.Add (s);
+            }
+        }
+
+        public void UnfilterStudents()
+        {
+            FilteredStudents.Clear ();
+
+            foreach (Student s in AllStudents)
             {
                 FilteredStudents.Add (s);
             }

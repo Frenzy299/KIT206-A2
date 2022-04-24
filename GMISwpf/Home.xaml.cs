@@ -27,6 +27,8 @@ namespace GMISwpf
             InitializeComponent ();
             theManager = (DataManager)Application.Current.FindResource ("datamanager");
 
+            memberDetailsButton.IsEnabled = false;
+
             if (theManager.CurrentStudent != null) studentNameLabel.Content = theManager.CurrentStudent.GivenName;
 
             theManager.FilterStudentsByGroup (theManager.CurrentStudent.GroupId);
@@ -44,8 +46,12 @@ namespace GMISwpf
 
         }
 
+        // 'View member details' button is only available when a member is selected.
+        // Attempting to view a member with no member selected would cause a crash
         private void ListBox_SelectionChanged (object sender, SelectionChangedEventArgs e)
         {
+            memberDetailsButton.IsEnabled = true;
+            
             // Pass selected student to the StackPanel called detailsPanel
             //detailsPanel.DataContext = nameList.SelectedItem;
         }
@@ -72,7 +78,7 @@ namespace GMISwpf
 
         private void AddMeeting_Click(object sender, RoutedEventArgs e)
         {
-            theManager.insertMeeting(AllMeeting);
+            //theManager.insertMeeting(AllMeeting);
         }
 
         private void EditMeeting_Click(object sender, RoutedEventArgs e)
@@ -81,6 +87,24 @@ namespace GMISwpf
             MainWindow objMainWindow = (MainWindow)Window.GetWindow(this);
 
             objMainWindow.Content = new EditMeeting();
+        }
+
+        // Display a message box with extra information about your group members
+        private void memberDetailsButton_Click (object sender, RoutedEventArgs e)
+        {
+            Student theStudent = (Student)nameList.SelectedItem;
+
+            string bodyText = String.Format ("{0} {1}\nPH: {2}\nEmail: {3}", theStudent.GivenName, theStudent.FamilyName, theStudent.Phone, theStudent.Email);
+
+
+            MessageBox.Show (bodyText, "Member details");
+        }
+
+        private void LogOut_Click (object sender, RoutedEventArgs e)
+        {
+            MainWindow objMainWindow = (MainWindow)Window.GetWindow (this);
+
+            objMainWindow.Content = new UserSelection ();
         }
     }
 }
