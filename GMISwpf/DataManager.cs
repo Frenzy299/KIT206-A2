@@ -304,7 +304,7 @@ namespace GMISwpf
                 conn.Open();
 
                 string command = String.Format("INSERT INTO meeting VALUES ('" + meetingid + "', '" + groupid + "', '" + day + "', '" + start + "', '"+ end + "', '" + room + "')");
-                Console.WriteLine(command);
+                //Console.WriteLine(command);
                 MySqlCommand myCommand = new MySqlCommand(command, conn);
 
                 myCommand.ExecuteNonQuery();
