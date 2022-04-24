@@ -29,6 +29,9 @@ namespace GMISwpf
         {
             //change current student's group to the one selected in GroupList
             //return home
+            MainWindow objMainWindow = (MainWindow)Window.GetWindow(this);
+
+            objMainWindow.Content = new Home();
         }
 
         private void Create_Click(object sender, RoutedEventArgs e)
@@ -36,6 +39,9 @@ namespace GMISwpf
             //add group to database with name as text displayed in GroupName
             //change the current group of all students selected in StudentList to the new group
             //return home
+            MainWindow objMainWindow = (MainWindow)Window.GetWindow(this);
+
+            objMainWindow.Content = new Home();
         }
     }
 }
