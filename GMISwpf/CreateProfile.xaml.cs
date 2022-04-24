@@ -59,12 +59,12 @@ namespace GMISwpf
             // if details arent valid
             if (Email.Text != ConfirmEmail.Text)
             {
-                MessageBox.Show ("FAIL");
+                MessageBox.Show ("FAIL MESSAGE");
             }
             else
             {
                 theManager.UpdateStudent (studentToUpdate, newTitle, newCampus, newPhone, newEmail, newCategory);
-                theManager.ReloadAll ();
+                
                 //move to group selection
                 MainWindow objMainWindow = (MainWindow)Window.GetWindow (this);
 

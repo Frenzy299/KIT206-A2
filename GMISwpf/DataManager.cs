@@ -53,7 +53,7 @@ namespace GMISwpf
             // Connection to be opened when data needs to be read
             conn = new MySqlConnection (connectionString);
 
-            // Fill the master lists
+            // Fill the master lists with 'reloading' set to false
             AllStudents = LoadStudents ();
             AllGroups = LoadGroups ();
             AllMeetings = LoadMeetings ();
@@ -94,6 +94,7 @@ namespace GMISwpf
         }
 
         // Load methods fill the master lists with data from the gmis database
+
         public List<Class> LoadClasses()
         {
             MySqlDataReader reader = null;
@@ -292,17 +293,12 @@ namespace GMISwpf
         // method for updating the lists, to be used after the database has been modifed
         public void ReloadAll()
         {
-            
-
-            // 1. call all the LoadX() methods on the master lists to update them
-
             AllStudents = LoadStudents ();
             AllGroups = LoadGroups ();
             AllMeetings = LoadMeetings ();
             AllClasses = LoadClasses ();
-
-            // 2. keep in mind at the moment the observable collections will not update until a 'Filter X by Y' method is called.
         }
+
         public void insertMeeting(int meetingid, int groupid, string day, string start, string end, string room)
         {
             // insert into database
@@ -311,16 +307,22 @@ namespace GMISwpf
                 conn.Open ();
 
                 string command = String.Format("INSERT INTO meeting VALUES ('" + meetingid + "', '" + groupid + "', '" + day + "', '" + start + "', '"+ end + "', '" + room + "')");
-                //Console.WriteLine(command);
+                
+                Console.WriteLine(command);
+                
                 MySqlCommand myCommand = new MySqlCommand(command, conn);
 
                 myCommand.ExecuteNonQuery();
+                
                 Console.WriteLine ("DATABASE MODIFIED");
+                
             }
             finally
             {
                 conn.Close();
             }
+
+            ReloadAll ();
         }
 
         public void UpdateMeeting(int meetingID, string day, string room)
@@ -333,15 +335,20 @@ namespace GMISwpf
                 string command = String.Format("UPDATE meeting SET day='{1}', room='{2}' WHERE meeting_id={0}",
                                                    meetingID, day, room);
                 Console.WriteLine(command);
+                
                 MySqlCommand myCommand = new MySqlCommand(command, conn);
 
                 myCommand.ExecuteNonQuery();
+                
                 Console.WriteLine ("DATABASE MODIFIED");
+                
             }
             finally
             {
                 conn.Close();
             }
+
+            ReloadAll ();
 
         }
 
@@ -356,15 +363,20 @@ namespace GMISwpf
                                                    id, newTitle, newCampus, newPhone, newEmail, newCategory);
 
                 Console.WriteLine (command);
+                
                 MySqlCommand myCommand = new MySqlCommand (command, conn);
 
                 myCommand.ExecuteNonQuery ();
+                
                 Console.WriteLine ("DATABASE MODIFIED");
+                
             }
             finally
             {
                 conn.Close ();
             }
+
+            ReloadAll ();
         }
 
         public void UpdateStudentGroup (int id, int newGroup)
@@ -377,15 +389,21 @@ namespace GMISwpf
                 string command = String.Format ("UPDATE student SET group_id={0} WHERE student_id={1}", newGroup, id);
 
                 Console.WriteLine (command);
+                
                 MySqlCommand myCommand = new MySqlCommand (command, conn);
 
                 myCommand.ExecuteNonQuery ();
+                
                 Console.WriteLine ("DATABASE MODIFIED");
+                CurrentStudent.GroupId = newGroup;
+                
             }
             finally
             {
                 conn.Close ();
             }
+
+            ReloadAll ();
         }
 
         public void insertGroup(string groupname)
@@ -395,15 +413,21 @@ namespace GMISwpf
             {
                 conn.Open();
 
-                string command = String.Format("INSERT INTO group VALUES ('" + groupname + "')");
+                string command = String.Format("INSERT INTO studentGroup (group_name) VALUES ('" + groupname + "')");
                 MySqlCommand myCommand = new MySqlCommand(command, conn);
 
+                Console.WriteLine (command);
                 myCommand.ExecuteNonQuery();
+
+                Console.WriteLine ("DATABASE MODIFIED");
+                
             }
             finally
             {
                 conn.Close();
             }
+
+            ReloadAll ();
         }
 
         public void UpdateGroup(int groupID, string groupname)
@@ -415,15 +439,19 @@ namespace GMISwpf
 
                 string command = String.Format("UPDATE group SET groupname='{1}' WHERE group_id={0}",
                                                    groupID, groupname);
+                Console.WriteLine (command);
                 MySqlCommand myCommand = new MySqlCommand(command, conn);
 
                 myCommand.ExecuteNonQuery();
+                Console.WriteLine ("DATABASE MODIFIED");
+                
             }
             finally
             {
-                conn.Close();
+                conn.Close ();
             }
 
+            ReloadAll ();
         }
         // Call this method when the GUI needs to display a subset of students
         public void FilterStudentsByGroup (int groupId)
@@ -440,7 +468,7 @@ namespace GMISwpf
             }
         }
 
-        public void UnfilterStudents()
+        public void UnfilterStudents ()
         {
             FilteredStudents.Clear ();
 
@@ -472,11 +500,21 @@ namespace GMISwpf
                            //^ change to 'groupname contains name' somehow
                            select s;
 
-            FilteredGroups.Clear();
+            FilteredGroups.Clear ();
 
             foreach (Group s in filtered)
             {
                 FilteredGroups.Add(s);
+            }
+        }
+
+        public void UnfilterGroups ()
+        {
+            FilteredGroups.Clear ();
+
+            foreach (Group s in AllGroups)
+            {
+                FilteredGroups.Add (s);
             }
         }
 

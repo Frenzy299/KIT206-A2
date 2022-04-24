@@ -14,7 +14,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Label Content="Join a group" HorizontalAlignment="Left" Height="26" Margin="89,48,0,0" VerticalAlignment="Top" Width="95"/>
-        <ListBox x:Name="GroupList" HorizontalAlignment="Left" Height="239" Margin="89,84,0,0" VerticalAlignment="Top" Width="233"/>
+        <ListBox x:Name="GroupList" HorizontalAlignment="Left" Height="239" Margin="89,84,0,0" VerticalAlignment="Top" Width="233" ItemsSource="{Binding Source={StaticResource GroupList}}" SelectionChanged="GroupList_SelectionChanged"/>
         <Button x:Name="Join" Content="Join" HorizontalAlignment="Left" Height="27" Margin="89,344,0,0" VerticalAlignment="Top" Width="58" Click="Join_Click"/>
         <Label Content="Create a group" HorizontalAlignment="Left" Height="26" Margin="26,23,0,0" VerticalAlignment="Top" Width="95" Grid.Column="1"/>
         <Button x:Name="Create" Content="Create" HorizontalAlignment="Left" Height="27" Margin="26,125,0,0" VerticalAlignment="Top" Width="58" Grid.Column="1" Click="Create_Click"/>

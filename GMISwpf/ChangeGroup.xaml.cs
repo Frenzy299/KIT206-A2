@@ -27,6 +27,8 @@ namespace GMISwpf
             InitializeComponent();
             theManager = (DataManager)Application.Current.FindResource("datamanager");
             Join.IsEnabled = false;
+
+            theManager.UnfilterGroups ();
         }
 
         private void Join_Click(object sender, RoutedEventArgs e)
@@ -38,8 +40,8 @@ namespace GMISwpf
             int newGroupId = newGroup.GroupId;
 
             theManager.UpdateStudentGroup(id, newGroupId);
-            theManager.CurrentStudent.GroupId = newGroupId;
-            theManager.ReloadAll();
+            //theManager.CurrentStudent.GroupId = newGroupId;
+            //theManager.ReloadAll ();
 
             //return home
             MainWindow objMainWindow = (MainWindow)Window.GetWindow(this);
@@ -54,6 +56,7 @@ namespace GMISwpf
 
             //add group to database with name as text displayed in GroupName
             theManager.insertGroup(groupName);
+            //theManager.ReloadAll ();
 
             //change the group of current student
             theManager.FilterGroupsByName(groupName);
