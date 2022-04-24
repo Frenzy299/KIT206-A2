@@ -47,6 +47,8 @@ namespace GMISwpf
         // Constructor: as soon as you create a DataManager object, it will store database info into appropriate list objects
         public DataManager ()
         {
+            Console.WriteLine ("test");
+            
             // Log in to database
             string connectionString = String.Format ("Database={0};Data Source={1};User Id={2};Password={3};", gmis_database, server, username, password);
 

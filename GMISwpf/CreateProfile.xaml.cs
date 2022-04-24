@@ -62,7 +62,7 @@ namespace GMISwpf
             }
             else
             {
-                //theManager.UpdateStudent (studentToUpdate, newTitle, newCampus, newPhone, newEmail, newCategory);
+                theManager.UpdateStudent (studentToUpdate, newTitle, newCampus, newPhone, newEmail, newCategory);
 
                 //move to group selection
                 MainWindow objMainWindow = (MainWindow)Window.GetWindow (this);
