@@ -73,5 +73,12 @@ namespace GMISwpf
         {
             //open AddMeeting
         }
+
+        private void EditMeeting_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow objMainWindow = (MainWindow)Window.GetWindow(this);
+
+            objMainWindow.Content = new EditMeeting();
+        }
     }
 }
