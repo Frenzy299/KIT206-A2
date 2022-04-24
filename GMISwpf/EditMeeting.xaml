@@ -12,11 +12,10 @@
         <Label x:Name="GroupName" Content="Group name" HorizontalAlignment="Left" Height="41" Margin="6,6,0,0" VerticalAlignment="Top" Width="173" FontWeight="Bold" FontSize="16"/>
         <Label x:Name="MeetingDetails" Content="Current meeting details&#xA;ID: 56378" HorizontalAlignment="Left" Height="60" Margin="10,59,0,0" VerticalAlignment="Top" Width="169"/>
         <ComboBox x:Name="Day" HorizontalAlignment="Left" Height="23" Margin="149,137,0,0" VerticalAlignment="Top" Width="47"/>
-        <ComboBox x:Name="Month" HorizontalAlignment="Left" Height="23" Margin="211,137,0,0" VerticalAlignment="Top" Width="47"/>
         <ComboBox x:Name="StartAMPM" HorizontalAlignment="Left" Height="23" Margin="387,119,0,0" VerticalAlignment="Top" Width="55"/>
         <Label Content="until" HorizontalAlignment="Left" Height="28" Margin="347,154,0,0" VerticalAlignment="Top" Width="36"/>
         <ComboBox x:Name="EndAMPM" HorizontalAlignment="Left" Height="23" Margin="387,185,0,0" VerticalAlignment="Top" Width="55"/>
-        <TextBox x:Name="Room" HorizontalAlignment="Left" Height="24" Margin="10,240,0,0" TextWrapping="Wrap" Text="Room" VerticalAlignment="Top" Width="200"/>
+        <TextBox x:Name="Room" HorizontalAlignment="Left" Height="24" Margin="10,240,0,0" TextWrapping="Wrap" Text="Room" VerticalAlignment="Top" Width="200" TextChanged="Room_TextChanged"/>
         <Label Content="Room" HorizontalAlignment="Left" Height="28" Margin="10,207,0,0" VerticalAlignment="Top" Width="127"/>
         <TextBlock x:Name="MeetingDateTime" HorizontalAlignment="Left" Height="48" Margin="10,119,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140"><Run Text="13th April"/><LineBreak/><Run Text="1:30PM - 2:30PM"/></TextBlock>
         <Button x:Name="SubmitChanges" Content="Submit changes" HorizontalAlignment="Left" Height="28" Margin="10,284,0,0" VerticalAlignment="Top" Width="103" Click="Submit_Click"/>
