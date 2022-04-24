@@ -20,14 +20,28 @@ namespace GMISwpf
     /// </summary>
     public partial class SelectGroup : Page
     {
+        private DataManager theManager;
+        
         public SelectGroup()
         {
             InitializeComponent();
+            theManager = (DataManager)Application.Current.FindResource ("datamanager");
+            Join.IsEnabled = false;
         }
 
         private void Join_Click(object sender, RoutedEventArgs e)
         {
             //change current student's group to the one selected in GroupList
+
+            int id = theManager.CurrentStudent.StudentId;
+            Group newGroup = (Group)GroupList.SelectedItem;
+
+            int newGroupId = newGroup.GroupId;
+
+            theManager.UpdateStudentGroup (id, newGroupId);
+            theManager.CurrentStudent.GroupId = newGroupId;
+            theManager.ReloadAll ();
+
             //return home
             MainWindow objMainWindow = (MainWindow)Window.GetWindow(this);
 
@@ -42,6 +56,11 @@ namespace GMISwpf
             MainWindow objMainWindow = (MainWindow)Window.GetWindow(this);
 
             objMainWindow.Content = new Home();
+        }
+
+        private void GroupList_SelectionChanged (object sender, SelectionChangedEventArgs e)
+        {
+            Join.IsEnabled = true;
         }
     }
 }

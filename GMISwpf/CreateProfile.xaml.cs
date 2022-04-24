@@ -49,7 +49,7 @@ namespace GMISwpf
         private void Continue_Click(object sender, RoutedEventArgs e)
         {
             //call UpdateStudent()
-            int studentToUpdate = theManager.CurrentStudent.GroupId;
+            int studentToUpdate = theManager.CurrentStudent.StudentId;
             string newTitle = Title.Text;
             string newCampus = Campus.Text;
             string newPhone = Phone.Text;
@@ -63,8 +63,8 @@ namespace GMISwpf
             }
             else
             {
-                //theManager.UpdateStudent (studentToUpdate, newTitle, newCampus, newPhone, newEmail, newCategory);
-
+                theManager.UpdateStudent (studentToUpdate, newTitle, newCampus, newPhone, newEmail, newCategory);
+                theManager.ReloadAll ();
                 //move to group selection
                 MainWindow objMainWindow = (MainWindow)Window.GetWindow (this);
 
