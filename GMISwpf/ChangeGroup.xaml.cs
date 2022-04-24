@@ -43,5 +43,12 @@ namespace GMISwpf
 
             objMainWindow.Content = new Home();
         }
+
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow objMainWindow = (MainWindow)Window.GetWindow(this);
+
+            objMainWindow.Content = new Home();
+        }
     }
 }
