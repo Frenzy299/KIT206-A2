@@ -42,8 +42,11 @@ namespace GMISwpf
             //in database:
             //change group name to the name in GroupName
             //change the current group of students selected in StudentList to the name in GroupName
-            
+
             //return to home
+            MainWindow objMainWindow = (MainWindow)Window.GetWindow(this);
+
+            objMainWindow.Content = new Home();
         }
     }
 }

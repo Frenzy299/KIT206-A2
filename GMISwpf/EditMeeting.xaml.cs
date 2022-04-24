@@ -45,13 +45,19 @@ namespace GMISwpf
             //change start time of current meeting to the time selected in EndHour, EndMinutes and EndAMPM
             //change room of current meeting to room displayed in Room
 
-            //return home
+            
+            MainWindow objMainWindow = (MainWindow)Window.GetWindow(this);
+
+            objMainWindow.Content = new Home();
         }
 
         private void CancelMeeting_Click(object sender, RoutedEventArgs e)
         {
             //Remove current meeting from database
-            //return home
+            
+            MainWindow objMainWindow = (MainWindow)Window.GetWindow(this);
+
+            objMainWindow.Content = new Home();
         }
     }
 }
