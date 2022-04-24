@@ -111,7 +111,7 @@ namespace GMISwpf
                         GroupID = reader.GetInt32 (1),
                         Day = ParseEnum<Day> (reader.GetString (2)),
                         //StartTime = (DateTime)reader.GetMySqlDateTime(3),
-                        //EndTime = reader.GetDateTime(4),
+                        EndTime = reader.GetDateTime(4),
                         Room = reader.GetString(5)
 
                     });
