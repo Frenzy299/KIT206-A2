@@ -289,6 +289,44 @@ namespace GMISwpf
             //      or find a way to update them while maintaining the filter
         }
 
+        public void UpdateStudent (int id, string newTitle, Campus newCampus, string newPhone, string newEmail, Category newCategory)
+        {
+            // insert into database
+            try
+            {
+                conn.Open ();
+
+                string command = String.Format ("UPDATE student WHERE student_id={0} SET title={1}, campus={2}, phone={3}, email={4}, category={5}",
+                                                   id, newTitle, newCampus, newPhone, newEmail, newCategory);
+
+                MySqlCommand myCommand = new MySqlCommand (command, conn);
+
+                myCommand.ExecuteNonQuery ();
+            }
+            finally
+            {
+                conn.Close ();
+            }
+        }
+
+        public void UpdateStudentGroup (int id, int newGroup)
+        {
+            // insert into database
+            try
+            {
+                conn.Open ();
+
+                string command = String.Format ("UPDATE student WHERE student_id={0} SET group_id={1}", id, newGroup);
+
+                MySqlCommand myCommand = new MySqlCommand (command, conn);
+
+                myCommand.ExecuteNonQuery ();
+            }
+            finally
+            {
+                conn.Close ();
+            }
+        }
         // Call this method when the GUI needs to display a subset of students
         public void FilterStudentsByGroup (int groupId)
         {
