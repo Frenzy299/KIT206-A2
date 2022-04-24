@@ -23,7 +23,7 @@ namespace GMISwpf
         public CreateProfile()
         {
             InitializeComponent();
-            Save.IsEnabled = false;
+            Submit.IsEnabled = false;
 
             Title.Items.Add("Mr");
             Title.Items.Add("Mrs");
@@ -33,18 +33,13 @@ namespace GMISwpf
 
         private void ConfirmEmail_changed(object sender, TextChangedEventArgs e)
         {
-            if (Email.Text.Contains(ConfirmEmail.Text)) { Save.IsEnabled = true; }
-        }
-
-        private void Save_Click(object sender, RoutedEventArgs e)
-        {
-            //display changes in UserDetails from information displayed in Title, Hobart/Launceston and Email
+            if (Email.Text.Contains(ConfirmEmail.Text)) { Submit.IsEnabled = true; }
         }
 
         private void Submit_Click(object sender, RoutedEventArgs e)
         {
             //commit changes to database from information displayed in Title, Hobart/Launceston, Email and ProfilePicture
-            //return to home
+            //continue to joining or creating a group
         }
 
         private void AddPhoto_Click(object sender, RoutedEventArgs e)

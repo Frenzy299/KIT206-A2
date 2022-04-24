@@ -43,7 +43,7 @@
         <Label Content="Meeting details" HorizontalAlignment="Left" Height="27" Margin="85,228,0,0" VerticalAlignment="Top" Width="172" Grid.Column="1"/>
         <Button x:Name="AddMeeting" Content="Add" HorizontalAlignment="Left" Height="20" Margin="228,52,0,0" VerticalAlignment="Top" Width="38" Grid.Column="1" Click="AddMeeting_Click"/>
         <Label x:Name="studentNameLabel" Content="User name here" HorizontalAlignment="Left" Height="32" Margin="32,16,0,0" VerticalAlignment="Top" Width="172"/>
-        <Button x:Name="EditMeeting" Content="Add" HorizontalAlignment="Left" Height="20" Margin="273,52,0,0" VerticalAlignment="Top" Width="38" Grid.Column="1" Click="EditMeeting_Click"/>
+        <Button x:Name="EditMeeting" Content="Edit" HorizontalAlignment="Left" Height="20" Margin="85,363,0,0" VerticalAlignment="Top" Width="38" Grid.Column="1" Click="EditMeeting_Click"/>
 
     </Grid>
 </Page>

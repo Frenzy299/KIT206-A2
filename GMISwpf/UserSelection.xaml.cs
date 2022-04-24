@@ -30,13 +30,22 @@ namespace GMISwpf
             theManager = (DataManager)Application.Current.FindResource ("datamanager");
         }
 
+        // "Go" clicked
         private void Button_Click (object sender, RoutedEventArgs e)
         {
             MainWindow objMainWindow = (MainWindow)Window.GetWindow (this);
 
             theManager.CurrentStudent = (Student)studentList.SelectedItem;
 
-            objMainWindow.Content = new Home ();
+            if (theManager.CurrentStudent.GroupId == 0)
+            {
+                objMainWindow.Content = new CreateProfile ();
+            }
+            else
+            {
+                objMainWindow.Content = new Home ();
+            }
+            
         }
 
         private void studentList_SelectionChanged (object sender, SelectionChangedEventArgs e)
