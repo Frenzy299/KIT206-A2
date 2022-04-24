@@ -31,7 +31,7 @@
         <Button x:Name="Continue" Content="Continue" Grid.Column="2" HorizontalAlignment="Left" Height="31" Margin="88,94,0,0" Grid.Row="1" VerticalAlignment="Top" Width="102" Click="Continue_Click"/>
         <TextBox x:Name="Phone" Grid.Column="1" HorizontalAlignment="Left" Height="21" Margin="31,147,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Phone" VerticalAlignment="Top" Width="202"/>
         <Label Content="Phone" HorizontalAlignment="Left" Height="24" Margin="31,123,0,0" VerticalAlignment="Top" Width="201" Grid.Column="1" Grid.Row="1"/>
-        <ComboBox x:Name="Campus" Grid.Column="1" HorizontalAlignment="Left" Height="26" Margin="30,112,0,0" VerticalAlignment="Top" Width="219"/>
+        <ComboBox x:Name="Campus" Grid.Column="1" HorizontalAlignment="Left" Height="26" Margin="30,112,0,0" VerticalAlignment="Top" Width="219" SelectionChanged="Campus_SelectionChanged"/>
         <Label Content="Category" Grid.Column="1" HorizontalAlignment="Left" Height="26" Margin="31,156,0,0" VerticalAlignment="Top" Width="95"/>
         <ComboBox x:Name="Category" Grid.Column="1" HorizontalAlignment="Left" Height="26" Margin="31,182,0,0" VerticalAlignment="Top" Width="219"/>
     </Grid>

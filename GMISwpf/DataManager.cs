@@ -296,14 +296,14 @@ namespace GMISwpf
             // 2. only call ReloadAll() when the page is about to change, so that the filtered lists get updated too (filters are called on page changes).
             //      or find a way to update them while maintaining the filter
         }
-        public void UpdateMeeting(int meetingID, Day day, string room)
+        public void UpdateMeeting(int meetingID, string day, string room)
         {
             // insert into database
             try
             {
                 conn.Open();
 
-                string command = String.Format("UPDATE meeting SET day='{1}', room='{2}', WHERE meeting_id={0}",
+                string command = String.Format("UPDATE meeting SET day='{1}', room='{2}' WHERE meeting_id={0}",
                                                    meetingID, day, room);
                 Console.WriteLine(command);
                 MySqlCommand myCommand = new MySqlCommand(command, conn);

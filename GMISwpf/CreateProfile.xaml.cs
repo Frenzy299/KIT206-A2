@@ -70,10 +70,6 @@ namespace GMISwpf
 
                 objMainWindow.Content = new SelectGroup ();
             }
-
-            
-            
-
             
         }
 
@@ -88,6 +84,11 @@ namespace GMISwpf
                 Uri imageUri = new Uri(openFileDialog.FileName);
                 ProfilePicture.Source = new BitmapImage(imageUri);
             }
+        }
+
+        private void Campus_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }
