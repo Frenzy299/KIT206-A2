@@ -32,7 +32,6 @@ namespace GMISwpf
         private void Join_Click(object sender, RoutedEventArgs e)
         {
             //change current student's group to the one selected in GroupList
-
             int id = theManager.CurrentStudent.StudentId;
             Group newGroup = (Group)GroupList.SelectedItem;
 
@@ -50,8 +49,17 @@ namespace GMISwpf
 
         private void Create_Click(object sender, RoutedEventArgs e)
         {
+            int id = theManager.CurrentStudent.StudentId;
+            string groupName = GroupName.Text;
+
             //add group to database with name as text displayed in GroupName
-            //change the current group of all students selected in StudentList to the new group
+            theManager.insertGroup(groupName);
+
+            //change the group of current student
+            theManager.FilterGroupsByName(groupName);
+            int groupID = theManager.FilteredGroups[0].GroupId;
+            theManager.UpdateStudentGroup(id, groupID);
+            
             //return home
             MainWindow objMainWindow = (MainWindow)Window.GetWindow(this);
 

@@ -387,6 +387,44 @@ namespace GMISwpf
                 conn.Close ();
             }
         }
+
+        public void insertGroup(string groupname)
+        {
+            // insert into database
+            try
+            {
+                conn.Open();
+
+                string command = String.Format("INSERT INTO group VALUES ('" + groupname + "')");
+                MySqlCommand myCommand = new MySqlCommand(command, conn);
+
+                myCommand.ExecuteNonQuery();
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        public void UpdateGroup(int groupID, string groupname)
+        {
+            // insert into database
+            try
+            {
+                conn.Open();
+
+                string command = String.Format("UPDATE group SET groupname='{1}' WHERE group_id={0}",
+                                                   groupID, groupname);
+                MySqlCommand myCommand = new MySqlCommand(command, conn);
+
+                myCommand.ExecuteNonQuery();
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+        }
         // Call this method when the GUI needs to display a subset of students
         public void FilterStudentsByGroup (int groupId)
         {
