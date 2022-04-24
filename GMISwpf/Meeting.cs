@@ -17,7 +17,7 @@ namespace GMISwpf
 
         public override string ToString()
         {
-            return MeetingId + ": From " + StartTime + " till " + EndTime + " at " + Room + " on " + Day + ".";
+            return String.Format("{0} in room {1} from {2} till {3}", Day, Room, StartTime, EndTime);
         }
     }
 }
