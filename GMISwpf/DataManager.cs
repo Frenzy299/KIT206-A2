@@ -286,7 +286,12 @@ namespace GMISwpf
             // method for updating the lists when the database was changed
 
             // 1. call all the LoadX() methods on the master lists to update them
-            //
+
+            AllStudents = LoadStudents ();
+            AllGroups = LoadGroups ();
+            AllMeetings = LoadMeetings ();
+            AllClasses = LoadClasses ();
+
             // 2. only call ReloadAll() when the page is about to change, so that the filtered lists get updated too (filters are called on page changes).
             //      or find a way to update them while maintaining the filter
         }
@@ -298,9 +303,9 @@ namespace GMISwpf
             {
                 conn.Open ();
 
-                string command = String.Format ("UPDATE student WHERE student_id={0} SET title='{1}', campus='{2}', phone='{3}', email='{4}', category='{5}'",
+                string command = String.Format ("UPDATE student SET title='{1}', campus='{2}', phone='{3}', email='{4}', category='{5}' WHERE student_id={0}",
                                                    id, newTitle, newCampus, newPhone, newEmail, newCategory);
-
+                Console.WriteLine (command);
                 MySqlCommand myCommand = new MySqlCommand (command, conn);
 
                 myCommand.ExecuteNonQuery ();
@@ -318,8 +323,9 @@ namespace GMISwpf
             {
                 conn.Open ();
 
-                string command = String.Format ("UPDATE student WHERE student_id={0} SET group_id={1}", id, newGroup);
+                string command = String.Format ("UPDATE student SET group_id={0} WHERE student_id={1}", newGroup, id);
 
+                Console.WriteLine (command);
                 MySqlCommand myCommand = new MySqlCommand (command, conn);
 
                 myCommand.ExecuteNonQuery ();
@@ -385,6 +391,14 @@ namespace GMISwpf
             foreach (Class s in filtered)
             {
                 FilteredClasses.Add (s);
+            }
+
+            if (FilteredClasses.Count == 0)
+            {
+                FilteredClasses.Add (new Class
+                {
+                    Room = "No class"
+                });
             }
         }
 
