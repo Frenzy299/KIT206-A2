@@ -20,6 +20,9 @@ namespace GMISwpf
     /// </summary>
     public partial class EditGroup : Page
     {
+        
+
+
         public EditGroup()
         {
             InitializeComponent();
@@ -29,7 +32,9 @@ namespace GMISwpf
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
-            //return to home
+            MainWindow objMainWindow = (MainWindow)Window.GetWindow (this);
+
+            objMainWindow.Content = new Home ();
         }
 
         private void SaveChanges_Click(object sender, RoutedEventArgs e)
