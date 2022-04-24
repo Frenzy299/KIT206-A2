@@ -72,7 +72,7 @@ namespace GMISwpf
 
         private void AddMeeting_Click(object sender, RoutedEventArgs e)
         {
-            //open AddMeeting
+            theManager.insertMeeting(AllMeeting);
         }
 
         private void EditMeeting_Click(object sender, RoutedEventArgs e)
