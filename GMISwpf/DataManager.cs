@@ -305,10 +305,12 @@ namespace GMISwpf
 
                 string command = String.Format ("UPDATE student SET title='{1}', campus='{2}', phone='{3}', email='{4}', category='{5}' WHERE student_id={0}",
                                                    id, newTitle, newCampus, newPhone, newEmail, newCategory);
+
                 Console.WriteLine (command);
                 MySqlCommand myCommand = new MySqlCommand (command, conn);
 
                 myCommand.ExecuteNonQuery ();
+                Console.WriteLine ("DATABASE MODIFIED");
             }
             finally
             {
@@ -329,6 +331,7 @@ namespace GMISwpf
                 MySqlCommand myCommand = new MySqlCommand (command, conn);
 
                 myCommand.ExecuteNonQuery ();
+                Console.WriteLine ("DATABASE MODIFIED");
             }
             finally
             {
