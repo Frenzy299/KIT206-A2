@@ -26,10 +26,10 @@ namespace GMISwpf
         {
             InitializeComponent ();
             theManager = (DataManager)Application.Current.FindResource ("datamanager");
-            GroupNameLabel.Content = theManager.CurrentStudent.GroupId;
+            GroupNameLabel.Content = theManager.GetGroupNameFromId(theManager.CurrentStudent.GroupId);
             memberDetailsButton.IsEnabled = false;
 
-            if (theManager.CurrentStudent != null) studentNameLabel.Content = theManager.CurrentStudent.GivenName;
+            if (theManager.CurrentStudent != null) studentNameLabel.Content = theManager.CurrentStudent.GivenName + " " + theManager.CurrentStudent.FamilyName;
 
             theManager.FilterStudentsByGroup (theManager.CurrentStudent.GroupId);
             theManager.FilterMeetingsByGroup (theManager.CurrentStudent.GroupId);
