@@ -16,7 +16,7 @@
         </Grid.ColumnDefinitions>
         <ListBox x:Name="nameList" HorizontalAlignment="Left" Height="267" Margin="3,91,0,0" VerticalAlignment="Top" Width="219"
             ItemsSource="{Binding Source={StaticResource StudentList}}" SelectionChanged="ListBox_SelectionChanged" Grid.Column="2" FontSize="16"/>
-        <Label Content="Group name" HorizontalAlignment="Left" Height="31" Margin="32,48,0,0" VerticalAlignment="Top" Width="154" FontSize="16" FontWeight="Bold"/>
+        <Label x:Name="GroupNameLabel" Content="Group name" HorizontalAlignment="Left" Height="31" Margin="32,48,0,0" VerticalAlignment="Top" Width="154" FontSize="16" FontWeight="Bold"/>
         <Button x:Name="EditGroup" Content="Edit group" HorizontalAlignment="Left" Height="26" Margin="32,116,0,0" VerticalAlignment="Top" Width="149" Click="EditGroup_Click"/>
         <Button x:Name="ChangeGroup" Content="Change group" HorizontalAlignment="Left" Height="28" Margin="32,147,0,0" VerticalAlignment="Top" Width="149" Click="ChangeGroup_Click"/>
         <StackPanel x:Name="classPanel" HorizontalAlignment="Left" Height="103" Margin="32,255,0,0" VerticalAlignment="Top" Width="172">
