@@ -26,7 +26,7 @@ namespace GMISwpf
         {
             InitializeComponent ();
             theManager = (DataManager)Application.Current.FindResource ("datamanager");
-
+            GroupNameLabel.Content = theManager.CurrentStudent.GroupId;
             memberDetailsButton.IsEnabled = false;
 
             if (theManager.CurrentStudent != null) studentNameLabel.Content = theManager.CurrentStudent.GivenName;
@@ -59,7 +59,8 @@ namespace GMISwpf
         private void meetingList_SelectionChanged (object sender, SelectionChangedEventArgs e)
         {
             meetingPanel.DataContext = meetingList.SelectedItem;
-            
+            theManager.CurrentMeeting = (Meeting)meetingList.SelectedItem;
+
         }
 
         private void ChangeGroup_Click(object sender, RoutedEventArgs e)
@@ -71,6 +72,8 @@ namespace GMISwpf
 
         private void EditGroup_Click(object sender, RoutedEventArgs e)
         {
+            
+            
             MainWindow objMainWindow = (MainWindow)Window.GetWindow(this);
 
             objMainWindow.Content = new EditGroup();
@@ -78,7 +81,9 @@ namespace GMISwpf
 
         private void AddMeeting_Click(object sender, RoutedEventArgs e)
         {
-            //theManager.insertMeeting(AllMeeting);
+            MainWindow objMainWindow = (MainWindow)Window.GetWindow(this);
+
+            objMainWindow.Content = new AddMeeting();
         }
 
         private void EditMeeting_Click(object sender, RoutedEventArgs e)

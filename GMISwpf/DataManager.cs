@@ -299,14 +299,14 @@ namespace GMISwpf
             AllClasses = LoadClasses ();
         }
 
-        public void insertMeeting(int meetingid, int groupid, string day, string start, string end, string room)
+        public void insertMeeting(int groupid, string day, string start, string end, string room)
         {
             // insert into database
             try
             {
                 conn.Open ();
 
-                string command = String.Format("INSERT INTO meeting VALUES ('" + meetingid + "', '" + groupid + "', '" + day + "', '" + start + "', '"+ end + "', '" + room + "')");
+                string command = String.Format("INSERT INTO meeting (group_id, day, start, end, room) VALUES ('" + groupid + "', '" + day + "', '" + start + "', '"+ end + "', '" + room + "')");
                 
                 Console.WriteLine(command);
                 

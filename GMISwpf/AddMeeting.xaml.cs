@@ -16,16 +16,14 @@ using System.Windows.Shapes;
 namespace GMISwpf
 {
     /// <summary>
-    /// Interaction logic for EditMeeting.xaml
+    /// Interaction logic for AddMeeting.xaml
     /// </summary>
-    public partial class EditMeeting : Page
+    public partial class AddMeeting : Page
     {
         private DataManager theManager;
-        public EditMeeting()
+        public AddMeeting()
         {
             InitializeComponent();
-            GroupNameLabel.Content = "Edit Meeting";
-            //MeetingDateTime.Text = theManager.CurrentMeeting.MeetingId.ToString();
             theManager = (DataManager)Application.Current.FindResource("datamanager");
             MeetingPanel.DataContext = theManager.CurrentMeeting;
             Day.Items.Add("Monday");
@@ -37,26 +35,33 @@ namespace GMISwpf
             Day.Items.Add("Sunday");
             for (int i = 1; i <= 12; i++) { StartHours.Items.Add(i); EndHours.Items.Add(i); }
             for (int i = 0; i <= 59; i++) { StartMinutes.Items.Add(i); EndMinutes.Items.Add(i); }
+ 
+        }
 
-            //display current meeting id in MeetingDetails
-            //display current meeting date/time in MeetingDateTime
+        private void StartHours_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void EndMinutes_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void Day_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
 
         private void Submit_Click(object sender, RoutedEventArgs e)
         {
-            //in database:
-            //change day of current meeting to the date selected in Day Month
-            //change start time of current meeting to the time selected in StartHour, StartMinutes and StartAMPM
-            //change start time of current meeting to the time selected in EndHour, EndMinutes and EndAMPM
-            //change room of current meeting to room displayed in Room
- 
+            int NewGroupid = theManager.CurrentStudent.GroupId;
+            string NewStart = StartHours.Text + ":" + StartMinutes.Text+ ":00";
+            string NewEnd = EndHours.Text + ":" + EndMinutes.Text + ":00";
             string newDay = Day.Text;
-            string newRoom = Room.Text;
-            int meetingToUpdate = theManager.CurrentMeeting.MeetingId;
+            string newRoom = Room.Text;           
 
-            
-
-            theManager.UpdateMeeting(meetingToUpdate, newDay , newRoom);
+            theManager.insertMeeting(NewGroupid, newDay, NewStart, NewEnd, newRoom);
             //theManager.CurrentMeeting.MeetingId = newGroupId;
             theManager.ReloadAll();
 
@@ -68,16 +73,9 @@ namespace GMISwpf
 
         private void CancelMeeting_Click(object sender, RoutedEventArgs e)
         {
-            //Remove current meeting from database
-            
             MainWindow objMainWindow = (MainWindow)Window.GetWindow(this);
 
             objMainWindow.Content = new Home();
-        }
-
-        private void Room_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
         }
     }
 }
