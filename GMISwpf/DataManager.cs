@@ -48,7 +48,7 @@ namespace GMISwpf
             Console.WriteLine ("test");
             
             // Log in to database
-            string connectionString = String.Format ("Database={0};Data Source={1};User Id={2};Password={3};", gmis_database, server, username, password);
+            string connectionString = String.Format ("Database={0};Data Source={1};User Id={2};Password={3};Convert Zero Datetime=True", gmis_database, server, username, password);
 
             // Connection to be opened when data needs to be read
             conn = new MySqlConnection (connectionString);
@@ -162,13 +162,13 @@ namespace GMISwpf
                 // while there is another row to read
                 while (reader.Read())
                 {
-                    
+                    Console.WriteLine (reader.GetDateTime (3));
                     meetings.Add(new Meeting
                     {
                         MeetingId = reader.GetInt32(0),
                         GroupID = reader.GetInt32 (1),
                         Day = ParseEnum<Day>(reader.GetString (2)),
-                        //StartTime = reader.GetDateTime(3),
+                        StartTime = reader.GetDateTime(3),
                         //EndTime = reader.GetDateTime(4),
                         Room = reader.GetString(5)
                         
@@ -489,6 +489,7 @@ namespace GMISwpf
             foreach (Meeting s in filtered)
             {
                 FilteredMeetings.Add(s);
+                Console.WriteLine (s.StartTime);
             }
             // Use LINQ to change FilteredMeetings
         }
@@ -539,6 +540,20 @@ namespace GMISwpf
                 });
             }
         }
+
+        public string GetGroupNameFromId (int id)
+        {
+            string name = "Invalid ID";
+            
+            var group = from g in AllGroups
+                        where g.GroupId == id
+                        select g;
+
+            if (group != null) name = group.First ().GroupName;
+
+            return name;
+        }
+
 
         /* leftover from the console prototype
         public void PrintStudents ()
