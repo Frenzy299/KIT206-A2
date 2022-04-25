@@ -26,7 +26,7 @@ namespace GMISwpf
         {
             InitializeComponent ();
             theManager = (DataManager)Application.Current.FindResource ("datamanager");
-
+            GroupNameLabel.Content = theManager.CurrentStudent.GroupId;
             memberDetailsButton.IsEnabled = false;
 
             if (theManager.CurrentStudent != null) studentNameLabel.Content = theManager.CurrentStudent.GivenName;
@@ -78,7 +78,9 @@ namespace GMISwpf
 
         private void AddMeeting_Click(object sender, RoutedEventArgs e)
         {
-            //theManager.insertMeeting(AllMeeting);
+            MainWindow objMainWindow = (MainWindow)Window.GetWindow(this);
+
+            objMainWindow.Content = new AddMeeting();
         }
 
         private void EditMeeting_Click(object sender, RoutedEventArgs e)

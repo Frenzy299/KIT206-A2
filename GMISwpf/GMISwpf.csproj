@@ -101,6 +101,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddMeeting.xaml.cs">
+      <DependentUpon>AddMeeting.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ChangeGroup.xaml.cs">
       <DependentUpon>ChangeGroup.xaml</DependentUpon>
     </Compile>
@@ -127,6 +130,10 @@
     <Compile Include="UserSelection.xaml.cs">
       <DependentUpon>UserSelection.xaml</DependentUpon>
     </Compile>
+    <Page Include="AddMeeting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ChangeGroup.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
