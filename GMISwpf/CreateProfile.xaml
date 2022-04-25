@@ -20,7 +20,7 @@
         </Grid.RowDefinitions>
         <Label Content="Create Profile" HorizontalAlignment="Left" Height="45" Margin="24,15,0,0" VerticalAlignment="Top" Width="193"/>
         <Label Content="Select your title" Grid.Column="1" HorizontalAlignment="Left" Height="26" Margin="31,15,0,0" VerticalAlignment="Top" Width="95"/>
-        <ComboBox x:Name="Title" Text="Select your title" Grid.Column="1" HorizontalAlignment="Left" Height="25" Margin="31,46,0,0" VerticalAlignment="Top" Width="219"/>
+        <ComboBox x:Name="Title" Text="Select your title" Grid.Column="1" HorizontalAlignment="Left" Height="25" Margin="31,46,0,0" VerticalAlignment="Top" Width="219" SelectionChanged="Title_SelectionChanged"/>
         <Label Content="Campus" Grid.Column="1" HorizontalAlignment="Left" Height="26" Margin="30,86,0,0" VerticalAlignment="Top" Width="95"/>
         <Button x:Name="AddPhoto" Content="Add photo..." Grid.Column="2" HorizontalAlignment="Left" Height="28" Margin="104,143,0,0" VerticalAlignment="Top" Width="80" RenderTransformOrigin="0.5,0.5" Click="AddPhoto_Click"/>
         <Image x:Name="ProfilePicture" Grid.Column="2" HorizontalAlignment="Left" Height="80" Margin="104,58,0,0" VerticalAlignment="Top" Width="80"/>
@@ -34,8 +34,8 @@
         <Label Content="Category" Grid.Column="1" HorizontalAlignment="Left" Height="26" Margin="31,156,0,0" VerticalAlignment="Top" Width="95"/>
         <ComboBox x:Name="Category" Grid.Column="1" HorizontalAlignment="Left" Height="26" Margin="31,182,0,0" VerticalAlignment="Top" Width="219"/>
         <Label x:Name="NameLabel" Content="Label" HorizontalAlignment="Left" Margin="24,68,0,0" VerticalAlignment="Top" Height="31" Width="95"/>
-        <Label x:Name="TitleLabel" Content="Label" HorizontalAlignment="Left" Margin="26,110,0,0" VerticalAlignment="Top" Height="31" Width="94"/>
-        <Label Content="Label" HorizontalAlignment="Left" Margin="26,151,0,0" VerticalAlignment="Top" Height="31" Width="94"/>
-        <Label Content="Label" HorizontalAlignment="Left" Margin="26,200,0,0" VerticalAlignment="Top" Height="31" Width="94"/>
+        <Label x:Name="CampusLabel" Content="Label" HorizontalAlignment="Left" Margin="26,110,0,0" VerticalAlignment="Top" Height="31" Width="94"/>
+        <Label x:Name="CategoryLabel" Content="Label" HorizontalAlignment="Left" Margin="26,151,0,0" VerticalAlignment="Top" Height="31" Width="94"/>
+        <Label x:Name="IdLabel" Content="Label" HorizontalAlignment="Left" Margin="26,187,0,0" VerticalAlignment="Top" Height="31" Width="94"/>
     </Grid>
 </Page>

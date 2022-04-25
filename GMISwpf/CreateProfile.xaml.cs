@@ -28,7 +28,7 @@ namespace GMISwpf
             InitializeComponent();
             theManager = (DataManager)Application.Current.FindResource ("datamanager");
             //Continue.IsEnabled = false;
-
+            
             Title.Items.Add("Mr");
             Title.Items.Add("Mrs");
             Title.Items.Add("Dr");
@@ -40,6 +40,8 @@ namespace GMISwpf
             Category.Items.Add ("Bachelors");
             Category.Items.Add ("Masters");
         }
+
+        
 
         private void ConfirmEmail_changed(object sender, TextChangedEventArgs e)
         {
@@ -88,7 +90,12 @@ namespace GMISwpf
 
         private void Campus_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            CampusLabel.Content = Campus.Text;
+        }
 
+        private void Title_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            NameLabel.Content = Title.Text + " " + theManager.CurrentStudent.GivenName + " " + theManager.CurrentStudent.FamilyName;
         }
     }
 }
