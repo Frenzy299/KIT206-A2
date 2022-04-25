@@ -24,8 +24,10 @@ namespace GMISwpf
         public EditMeeting()
         {
             InitializeComponent();
+            GroupNameLabel.Content = "Edit Meeting";
+            //MeetingDateTime.Text = theManager.CurrentMeeting.MeetingId.ToString();
             theManager = (DataManager)Application.Current.FindResource("datamanager");
-
+            MeetingPanel.DataContext = theManager.CurrentMeeting;
             Day.Items.Add("Monday");
             Day.Items.Add("Tuesday");
             Day.Items.Add("Wednesday");
@@ -35,10 +37,6 @@ namespace GMISwpf
             Day.Items.Add("Sunday");
             for (int i = 1; i <= 12; i++) { StartHours.Items.Add(i); EndHours.Items.Add(i); }
             for (int i = 0; i <= 59; i++) { StartMinutes.Items.Add(i); EndMinutes.Items.Add(i); }
-            StartAMPM.Items.Add("AM");
-            StartAMPM.Items.Add("PM");
-            EndAMPM.Items.Add("AM");
-            EndAMPM.Items.Add("PM");
 
             //display current meeting id in MeetingDetails
             //display current meeting date/time in MeetingDateTime

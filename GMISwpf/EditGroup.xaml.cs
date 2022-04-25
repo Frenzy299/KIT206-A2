@@ -20,8 +20,6 @@ namespace GMISwpf
     /// </summary>
     public partial class EditGroup : Page
     {
-        
-
 
         public EditGroup()
         {

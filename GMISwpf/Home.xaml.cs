@@ -59,7 +59,8 @@ namespace GMISwpf
         private void meetingList_SelectionChanged (object sender, SelectionChangedEventArgs e)
         {
             meetingPanel.DataContext = meetingList.SelectedItem;
-            
+            theManager.CurrentMeeting = (Meeting)meetingList.SelectedItem;
+
         }
 
         private void ChangeGroup_Click(object sender, RoutedEventArgs e)
@@ -71,6 +72,8 @@ namespace GMISwpf
 
         private void EditGroup_Click(object sender, RoutedEventArgs e)
         {
+            
+            
             MainWindow objMainWindow = (MainWindow)Window.GetWindow(this);
 
             objMainWindow.Content = new EditGroup();

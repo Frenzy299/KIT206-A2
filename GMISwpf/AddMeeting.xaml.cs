@@ -25,7 +25,7 @@ namespace GMISwpf
         {
             InitializeComponent();
             theManager = (DataManager)Application.Current.FindResource("datamanager");
-
+            MeetingPanel.DataContext = theManager.CurrentMeeting;
             Day.Items.Add("Monday");
             Day.Items.Add("Tuesday");
             Day.Items.Add("Wednesday");
