@@ -20,12 +20,16 @@ namespace GMISwpf
     /// </summary>
     public partial class EditGroup : Page
     {
+        private DataManager theManager;
 
         public EditGroup()
         {
             InitializeComponent();
+            theManager = (DataManager)Application.Current.FindResource("datamanager");
 
             //Display "Edit (CurrentGroupName)" in GroupNameLabel
+            string CurrentStudentName = theManager.GetGroupNameFromId(theManager.CurrentStudent.GroupId);
+            GroupNameLabel.Content = String.Format("Edit {0}", CurrentStudentName);
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)
@@ -39,7 +43,9 @@ namespace GMISwpf
         {
             //in database:
             //change group name to the name in GroupName
-            //change the current group of students selected in StudentList to the name in GroupName
+            int groupID = theManager.CurrentStudent.GroupId;
+            string newGroupName = GroupName.Text;
+            theManager.UpdateGroup(groupID, newGroupName);
 
             //return to home
             MainWindow objMainWindow = (MainWindow)Window.GetWindow(this);

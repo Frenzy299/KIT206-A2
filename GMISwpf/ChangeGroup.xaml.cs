@@ -40,8 +40,8 @@ namespace GMISwpf
             int newGroupId = newGroup.GroupId;
 
             theManager.UpdateStudentGroup(id, newGroupId);
-            //theManager.CurrentStudent.GroupId = newGroupId;
-            //theManager.ReloadAll ();
+            theManager.CurrentStudent.GroupId = newGroupId;
+            theManager.ReloadAll ();
 
             //return home
             MainWindow objMainWindow = (MainWindow)Window.GetWindow(this);
@@ -56,7 +56,7 @@ namespace GMISwpf
 
             //add group to database with name as text displayed in GroupName
             theManager.insertGroup(groupName);
-            //theManager.ReloadAll ();
+            theManager.ReloadAll ();
 
             //change the group of current student
             theManager.FilterGroupsByName(groupName);
