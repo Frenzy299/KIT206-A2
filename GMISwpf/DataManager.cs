@@ -554,6 +554,19 @@ namespace GMISwpf
             return name;
         }
 
+        public int GetGroupIdFromName (string name)
+        {
+            int id = 0;
+
+            var group = from g in AllGroups
+                        where g.GroupName == name
+                        select g;
+
+            if (group != null) id = group.First ().GroupId;
+
+            return id;
+        }
+
 
         /* leftover from the console prototype
         public void PrintStudents ()
