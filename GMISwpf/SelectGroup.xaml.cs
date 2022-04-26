@@ -40,7 +40,7 @@ namespace GMISwpf
             int newGroupId = newGroup.GroupId;
 
             theManager.UpdateStudentGroup (id, newGroupId);
-            //theManager.CurrentStudent.GroupId = newGroupId;
+            theManager.CurrentStudent.GroupId = newGroupId;
             //theManager.ReloadAll ();
 
             //return home
@@ -55,18 +55,16 @@ namespace GMISwpf
             string groupName = GroupName.Text;
 
             //add group to database with name as text displayed in GroupName
-            theManager.insertGroup(groupName);
-            //theManager.ReloadAll ();
+            theManager.insertGroup (groupName);
 
             //change the group of current student
-            theManager.FilterGroupsByName(groupName);
-            int groupID = theManager.FilteredGroups[0].GroupId;
-            theManager.UpdateStudentGroup(id, groupID);
-            
-            //return home
-            MainWindow objMainWindow = (MainWindow)Window.GetWindow(this);
+            int groupID = theManager.GetGroupIdFromName (groupName);
+            theManager.UpdateStudentGroup (id, groupID);
 
-            objMainWindow.Content = new Home();
+            //return home
+            MainWindow objMainWindow = (MainWindow)Window.GetWindow (this);
+
+            objMainWindow.Content = new Home ();
         }
 
         private void GroupList_SelectionChanged (object sender, SelectionChangedEventArgs e)

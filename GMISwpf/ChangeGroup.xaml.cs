@@ -41,7 +41,7 @@ namespace GMISwpf
 
             theManager.UpdateStudentGroup(id, newGroupId);
             theManager.CurrentStudent.GroupId = newGroupId;
-            theManager.ReloadAll ();
+            //theManager.ReloadAll ();
 
             //return home
             MainWindow objMainWindow = (MainWindow)Window.GetWindow(this);

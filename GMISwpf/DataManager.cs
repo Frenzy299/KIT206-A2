@@ -53,7 +53,7 @@ namespace GMISwpf
             // Connection to be opened when data needs to be read
             conn = new MySqlConnection (connectionString);
 
-            // Fill the master lists with 'reloading' set to false
+            // Fill the master lists
             AllStudents = LoadStudents ();
             AllGroups = LoadGroups ();
             AllMeetings = LoadMeetings ();
@@ -491,14 +491,12 @@ namespace GMISwpf
                 FilteredMeetings.Add(s);
                 Console.WriteLine (s.StartTime);
             }
-            // Use LINQ to change FilteredMeetings
         }
 
-        public void FilterGroupsByName (string name)
+        /*public void FilterGroupsByName (string name)
         {
             var filtered = from s in AllGroups
                            where s.GroupName == name
-                           //^ change to 'groupname contains name' somehow
                            select s;
 
             FilteredGroups.Clear ();
@@ -507,7 +505,7 @@ namespace GMISwpf
             {
                 FilteredGroups.Add(s);
             }
-        }
+        }*/
 
         public void UnfilterGroups ()
         {
