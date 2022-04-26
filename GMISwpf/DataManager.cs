@@ -437,7 +437,7 @@ namespace GMISwpf
             {
                 conn.Open();
 
-                string command = String.Format("UPDATE studentGroup (group_name) SET group_name='{1}' WHERE group_id={0}",
+                string command = String.Format("UPDATE studentGroup SET group_name='{1}' WHERE group_id={0}",
                                                    groupID, groupname);
                 Console.WriteLine (command);
                 MySqlCommand myCommand = new MySqlCommand(command, conn);
