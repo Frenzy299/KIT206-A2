@@ -24,11 +24,11 @@
         <Label Content="Campus" Grid.Column="1" HorizontalAlignment="Left" Height="26" Margin="30,86,0,0" VerticalAlignment="Top" Width="95"/>
         <Button x:Name="AddPhoto" Content="Add photo..." Grid.Column="2" HorizontalAlignment="Left" Height="28" Margin="104,143,0,0" VerticalAlignment="Top" Width="80" RenderTransformOrigin="0.5,0.5" Click="AddPhoto_Click"/>
         <Image x:Name="ProfilePicture" Grid.Column="2" HorizontalAlignment="Left" Height="80" Margin="104,58,0,0" VerticalAlignment="Top" Width="80"/>
-        <TextBox x:Name="Email" HorizontalAlignment="Center" Height="21" Margin="30,58,51,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="202" Grid.Column="1" Text="Email" Grid.Row="1"/>
-        <Label Content="Email" HorizontalAlignment="Left" Height="24" Margin="30,34,0,0" VerticalAlignment="Top" Width="201" Grid.Column="1" Grid.Row="1"/>
-        <TextBox x:Name="ConfirmEmail" HorizontalAlignment="Center" Height="21" Margin="30,84,51,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="202" Grid.Column="1" Text="Confirm email" TextChanged="ConfirmEmail_changed" Grid.Row="1"/>
+        <TextBox x:Name="Email" HorizontalAlignment="Left" Height="21" Margin="32,39,49,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="202" Grid.Column="1" Grid.Row="1"/>
+        <Label Content="Email" HorizontalAlignment="Left" Height="24" Margin="32,10,0,0" VerticalAlignment="Top" Width="201" Grid.Column="1" Grid.Row="1"/>
+        <TextBox x:Name="ConfirmEmail" HorizontalAlignment="Left" Height="21" Margin="32,84,49,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="202" Grid.Column="1" TextChanged="ConfirmEmail_changed" Grid.Row="1"/>
         <Button x:Name="Continue" Content="Continue" Grid.Column="2" HorizontalAlignment="Left" Height="31" Margin="88,94,0,0" Grid.Row="1" VerticalAlignment="Top" Width="102" Click="Continue_Click"/>
-        <TextBox x:Name="Phone" Grid.Column="1" HorizontalAlignment="Left" Height="21" Margin="31,147,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Phone" VerticalAlignment="Top" Width="202"/>
+        <TextBox x:Name="Phone" Grid.Column="1" HorizontalAlignment="Left" Height="21" Margin="32,147,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="202"/>
         <Label Content="Phone" HorizontalAlignment="Left" Height="24" Margin="31,123,0,0" VerticalAlignment="Top" Width="201" Grid.Column="1" Grid.Row="1"/>
         <ComboBox x:Name="Campus" Grid.Column="1" HorizontalAlignment="Left" Height="26" Margin="30,112,0,0" VerticalAlignment="Top" Width="219" SelectionChanged="Campus_SelectionChanged"/>
         <Label Content="Category" Grid.Column="1" HorizontalAlignment="Left" Height="26" Margin="31,156,0,0" VerticalAlignment="Top" Width="95"/>
@@ -37,5 +37,6 @@
         <Label x:Name="CampusLabel" Content="Label" HorizontalAlignment="Left" Margin="26,110,0,0" VerticalAlignment="Top" Height="31" Width="94"/>
         <Label x:Name="CategoryLabel" Content="Label" HorizontalAlignment="Left" Margin="26,151,0,0" VerticalAlignment="Top" Height="31" Width="94"/>
         <Label x:Name="IdLabel" Content="Label" HorizontalAlignment="Left" Margin="26,187,0,0" VerticalAlignment="Top" Height="31" Width="94"/>
+        <Label Content="Confirm email" HorizontalAlignment="Left" Height="24" Margin="30,60,0,0" VerticalAlignment="Top" Width="201" Grid.Column="1" Grid.Row="1"/>
     </Grid>
 </Page>

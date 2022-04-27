@@ -24,7 +24,6 @@ namespace GMISwpf
         public EditMeeting()
         {
             InitializeComponent();
-            GroupNameLabel.Content = "Edit Meeting";
             //MeetingDateTime.Text = theManager.CurrentMeeting.MeetingId.ToString();
             theManager = (DataManager)Application.Current.FindResource("datamanager");
             MeetingPanel.DataContext = theManager.CurrentMeeting;
@@ -51,14 +50,15 @@ namespace GMISwpf
             //change room of current meeting to room displayed in Room
  
             string newDay = Day.Text;
+            string newStart = StartHours.Text + ":" + StartMinutes.Text + ":00";
+            string newEnd = EndHours.Text + ":" + EndMinutes.Text + ":00";
             string newRoom = Room.Text;
             int meetingToUpdate = theManager.CurrentMeeting.MeetingId;
 
             
 
-            theManager.UpdateMeeting(meetingToUpdate, newDay , newRoom);
+            theManager.UpdateMeeting(meetingToUpdate, newDay, newStart, newEnd, newRoom);
             //theManager.CurrentMeeting.MeetingId = newGroupId;
-            theManager.ReloadAll();
 
 
             MainWindow objMainWindow = (MainWindow)Window.GetWindow(this);
@@ -69,15 +69,28 @@ namespace GMISwpf
         private void CancelMeeting_Click(object sender, RoutedEventArgs e)
         {
             //Remove current meeting from database
-            
-            MainWindow objMainWindow = (MainWindow)Window.GetWindow(this);
 
-            objMainWindow.Content = new Home();
+            if (MessageBox.Show ("Are you sure you want to delete this meeting?", "Cancel meeting", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+            {
+                theManager.DeleteMeeting (theManager.CurrentMeeting.MeetingId);
+                
+                MainWindow objMainWindow = (MainWindow)Window.GetWindow (this);
+                objMainWindow.Content = new Home ();
+            }
+
+            //MainWindow objMainWindow = (MainWindow)Window.GetWindow(this);
+            //objMainWindow.Content = new Home();
         }
 
         private void Room_TextChanged(object sender, TextChangedEventArgs e)
         {
 
+        }
+
+        private void BackButton_Click (object sender, RoutedEventArgs e)
+        {
+            MainWindow objMainWindow = (MainWindow)Window.GetWindow (this);
+            objMainWindow.Content = new Home ();
         }
     }
 }

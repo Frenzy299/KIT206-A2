@@ -59,7 +59,7 @@ namespace GMISwpf
             string NewStart = StartHours.Text + ":" + StartMinutes.Text+ ":00";
             string NewEnd = EndHours.Text + ":" + EndMinutes.Text + ":00";
             string newDay = Day.Text;
-            string newRoom = Room.Text;           
+            string newRoom = Room.Text;
 
             theManager.insertMeeting(NewGroupid, newDay, NewStart, NewEnd, newRoom);
             //theManager.CurrentMeeting.MeetingId = newGroupId;

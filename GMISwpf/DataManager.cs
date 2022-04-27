@@ -45,7 +45,7 @@ namespace GMISwpf
         // Constructor: as soon as you create a DataManager object, it will store database info into appropriate list objects
         public DataManager ()
         {
-            Console.WriteLine ("test");
+            Console.WriteLine ("DataManager created");
             
             // Log in to database
             string connectionString = String.Format ("Database={0};Data Source={1};User Id={2};Password={3};Convert Zero Datetime=True", gmis_database, server, username, password);
@@ -66,7 +66,7 @@ namespace GMISwpf
             FilteredClasses = new ObservableCollection<Class> (AllClasses);
         }
 
-        // Provided by UTAS, convert string to appropriate Enum value
+        // Provided by UTAS, convert string to corresponding Enum value
         public static T ParseEnum<T> (string value)
         {
             return (T)Enum.Parse (typeof (T), value);
@@ -162,14 +162,13 @@ namespace GMISwpf
                 // while there is another row to read
                 while (reader.Read())
                 {
-                    Console.WriteLine (reader.GetDateTime (3));
                     meetings.Add(new Meeting
                     {
                         MeetingId = reader.GetInt32(0),
                         GroupID = reader.GetInt32 (1),
-                        Day = ParseEnum<Day>(reader.GetString (2)),
-                        StartTime = reader.GetDateTime(3),
-                        //EndTime = reader.GetDateTime(4),
+                        Day = ParseEnum<Day> (reader.GetString (2)),
+                        StartTime = reader.GetString(3),
+                        EndTime = reader.GetString(4),
                         Room = reader.GetString(5)
                         
                     });
@@ -306,7 +305,7 @@ namespace GMISwpf
             {
                 conn.Open ();
 
-                string command = String.Format("INSERT INTO meeting (group_id, day, start, end, room) VALUES ('" + groupid + "', '" + day + "', '" + start + "', '"+ end + "', '" + room + "')");
+                string command = "INSERT INTO meeting (group_id, day, start, end, room) VALUES ('" + groupid + "', '" + day + "', '" + start + "', '"+ end + "', '" + room + "')";
                 
                 Console.WriteLine(command);
                 
@@ -314,7 +313,7 @@ namespace GMISwpf
 
                 myCommand.ExecuteNonQuery();
                 
-                Console.WriteLine ("DATABASE MODIFIED");
+                Console.WriteLine ("DATABASE MODIFIED - ADDED MEETING");
                 
             }
             finally
@@ -325,22 +324,22 @@ namespace GMISwpf
             ReloadAll ();
         }
 
-        public void UpdateMeeting(int meetingID, string day, string room)
+        public void UpdateMeeting(int meetingID, string day, string start, string end, string room)
         {
             // insert into database
             try
             {
                 conn.Open();
 
-                string command = String.Format("UPDATE meeting SET day='{1}', room='{2}' WHERE meeting_id={0}",
-                                                   meetingID, day, room);
+                string command = String.Format("UPDATE meeting SET day='{0}', start='{1}', end='{2}', room='{3}' WHERE meeting_id={4}",
+                                                   day, start, end, room, meetingID);
                 Console.WriteLine(command);
                 
                 MySqlCommand myCommand = new MySqlCommand(command, conn);
 
                 myCommand.ExecuteNonQuery();
                 
-                Console.WriteLine ("DATABASE MODIFIED");
+                Console.WriteLine ("DATABASE MODIFIED - MEETING UPDATED");
                 
             }
             finally
@@ -368,7 +367,7 @@ namespace GMISwpf
 
                 myCommand.ExecuteNonQuery ();
                 
-                Console.WriteLine ("DATABASE MODIFIED");
+                Console.WriteLine ("DATABASE MODIFIED - PROFILE CREATED");
                 
             }
             finally
@@ -394,7 +393,7 @@ namespace GMISwpf
 
                 myCommand.ExecuteNonQuery ();
                 
-                Console.WriteLine ("DATABASE MODIFIED");
+                Console.WriteLine ("DATABASE MODIFIED - STUDENT GROUP CHANGE");
                 CurrentStudent.GroupId = newGroup;
                 
             }
@@ -419,7 +418,7 @@ namespace GMISwpf
                 Console.WriteLine (command);
                 myCommand.ExecuteNonQuery();
 
-                Console.WriteLine ("DATABASE MODIFIED");
+                Console.WriteLine ("DATABASE MODIFIED - GROUP ADDED");
                 
             }
             finally
@@ -443,7 +442,7 @@ namespace GMISwpf
                 MySqlCommand myCommand = new MySqlCommand(command, conn);
 
                 myCommand.ExecuteNonQuery();
-                Console.WriteLine ("DATABASE MODIFIED");
+                Console.WriteLine ("DATABASE MODIFIED - GROUP UPDATED");
                 
             }
             finally
@@ -453,6 +452,28 @@ namespace GMISwpf
 
             ReloadAll ();
         }
+
+        public void DeleteMeeting (int meetingID) {
+            try
+            {
+                conn.Open ();
+
+                string command = "DELETE FROM meeting WHERE meeting_id=" + meetingID;
+                Console.WriteLine (command);
+                MySqlCommand myCommand = new MySqlCommand (command, conn);
+
+                myCommand.ExecuteNonQuery ();
+                Console.WriteLine ("DATABASE MODIFIED - MEETING DELETED");
+
+            }
+            finally
+            {
+                conn.Close ();
+            }
+
+            ReloadAll ();
+        }
+
         // Call this method when the GUI needs to display a subset of students
         public void FilterStudentsByGroup (int groupId)
         {
@@ -489,7 +510,6 @@ namespace GMISwpf
             foreach (Meeting s in filtered)
             {
                 FilteredMeetings.Add(s);
-                Console.WriteLine (s.StartTime);
             }
         }
 
@@ -564,23 +584,5 @@ namespace GMISwpf
 
             return id;
         }
-
-
-        /* leftover from the console prototype
-        public void PrintStudents ()
-        {
-            foreach (Student s in AllStudents)
-            {
-                Console.WriteLine (s);
-            }
-        }
-
-        public void PrintGroups ()
-        {
-            foreach (Group g in AllGroups)
-            {
-                Console.WriteLine (g);
-            }
-        }*/
     }
 }

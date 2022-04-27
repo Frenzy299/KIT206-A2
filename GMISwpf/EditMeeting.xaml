@@ -9,25 +9,31 @@
       Title="EditMeeting">
 
     <Grid>
-        <Label x:Name="GroupNameLabel" Content="Group name" HorizontalAlignment="Left" Height="41" Margin="6,6,0,0" VerticalAlignment="Top" Width="173" FontWeight="Bold" FontSize="16"/>
-        <StackPanel x:Name="MeetingPanel" HorizontalAlignment="Left" Height="103" Margin="10,105,0,0" VerticalAlignment="Top" Width="172">
+        <Label x:Name="GroupNameLabel" Content="Edit meeting" HorizontalAlignment="Left" Height="41" Margin="352,31,0,0" VerticalAlignment="Top" Width="117" FontWeight="Bold" FontSize="16"/>
+        <StackPanel x:Name="MeetingPanel" HorizontalAlignment="Left" Height="103" Margin="95,179,0,0" VerticalAlignment="Top" Width="172">
             <StackPanel.Background>
                 <SolidColorBrush Color="Black" Opacity="0.1"/>
             </StackPanel.Background>
             <Label Content="{Binding Path=Day}"/>
-            <Label Content="Time"/>
+            <Label Content="{Binding Path=StartTime}"/>
+            <Label Content="{Binding Path=EndTime}"/>
             <Label Content="{Binding Path=Room}"/>
         </StackPanel>
-        <Label x:Name="MeetingDetails" Content="Current meeting details" HorizontalAlignment="Left" Height="60" Margin="10,59,0,0" VerticalAlignment="Top" Width="169"/>
-        <ComboBox x:Name="Day" HorizontalAlignment="Left" Height="23" Margin="284,66,0,0" VerticalAlignment="Top" Width="134"/>
-        <Label Content="until" HorizontalAlignment="Left" Height="28" Margin="347,154,0,0" VerticalAlignment="Top" Width="36"/>
-        <TextBox x:Name="Room" HorizontalAlignment="Left" Height="24" Margin="10,240,0,0" TextWrapping="Wrap" Text="Room" VerticalAlignment="Top" Width="200" TextChanged="Room_TextChanged"/>
-        <Label Content="Room" HorizontalAlignment="Left" Height="28" Margin="10,207,0,0" VerticalAlignment="Top" Width="127"/>
-        <Button x:Name="SubmitChanges" Content="Submit changes" HorizontalAlignment="Left" Height="28" Margin="10,284,0,0" VerticalAlignment="Top" Width="103" Click="Submit_Click"/>
-        <Button x:Name="CancelMeeting" Content="Cancel meeting" HorizontalAlignment="Left" Height="28" Margin="118,284,0,0" VerticalAlignment="Top" Width="103" Click="CancelMeeting_Click"/>
-        <ComboBox x:Name="StartHours" HorizontalAlignment="Left" Height="23" Margin="284,119,0,0" VerticalAlignment="Top" Width="58"/>
-        <ComboBox x:Name="StartMinutes" HorizontalAlignment="Left" Height="23" Margin="365,119,0,0" VerticalAlignment="Top" Width="53"/>
-        <ComboBox x:Name="EndHours" HorizontalAlignment="Left" Height="23" Margin="284,185,0,0" VerticalAlignment="Top" Width="58" RenderTransformOrigin="-0.609,-0.536"/>
-        <ComboBox x:Name="EndMinutes" HorizontalAlignment="Left" Height="23" Margin="365,185,0,0" VerticalAlignment="Top" Width="53"/>
+        <Label x:Name="MeetingDetails" Content="Current meeting details" HorizontalAlignment="Left" Height="30" Margin="95,144,0,0" VerticalAlignment="Top" Width="169"/>
+        <ComboBox x:Name="Day" HorizontalAlignment="Left" Height="23" Margin="342,107,0,0" VerticalAlignment="Top" Width="134"/>
+        <Label Content="until" HorizontalAlignment="Left" Height="28" Margin="395,204,0,0" VerticalAlignment="Top" Width="36"/>
+        <TextBox x:Name="Room" HorizontalAlignment="Left" Height="24" Margin="342,298,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="134" TextChanged="Room_TextChanged"/>
+        <Label Content="Room" HorizontalAlignment="Left" Height="28" Margin="342,270,0,0" VerticalAlignment="Top" Width="127"/>
+        <Button x:Name="SubmitChanges" Content="Submit changes" HorizontalAlignment="Left" Height="22" Margin="324,347,0,0" VerticalAlignment="Top" Width="89" Click="Submit_Click"/>
+        <Button x:Name="CancelMeeting" Content="Cancel this meeting" HorizontalAlignment="Left" Height="28" Margin="324,380,0,0" VerticalAlignment="Top" Width="167" Click="CancelMeeting_Click" Background="#FFCB4E4E" Foreground="White" BorderBrush="Black"/>
+        <ComboBox x:Name="StartHours" HorizontalAlignment="Left" Height="23" Margin="342,176,0,0" VerticalAlignment="Top" Width="58"/>
+        <ComboBox x:Name="StartMinutes" HorizontalAlignment="Left" Height="23" Margin="423,176,0,0" VerticalAlignment="Top" Width="53"/>
+        <ComboBox x:Name="EndHours" HorizontalAlignment="Left" Height="23" Margin="342,237,0,0" VerticalAlignment="Top" Width="58" RenderTransformOrigin="-0.609,-0.536"/>
+        <ComboBox x:Name="EndMinutes" HorizontalAlignment="Left" Height="23" Margin="423,237,0,0" VerticalAlignment="Top" Width="53"/>
+        <Label x:Name="MeetingDetails_Copy" Content="Day" HorizontalAlignment="Left" Height="30" Margin="342,77,0,0" VerticalAlignment="Top" Width="34"/>
+        <Label x:Name="MeetingDetails_Copy1" Content="Time" HorizontalAlignment="Left" Height="30" Margin="342,146,0,0" VerticalAlignment="Top" Width="99"/>
+        <Label Content=":" HorizontalAlignment="Left" Margin="405,173,0,0" VerticalAlignment="Top"/>
+        <Label Content=":" HorizontalAlignment="Left" Margin="405,234,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="BackButton" Content="Go back" HorizontalAlignment="Left" Height="22" Margin="423,347,0,0" VerticalAlignment="Top" Width="68" Click="BackButton_Click"/>
     </Grid>
 </Page>

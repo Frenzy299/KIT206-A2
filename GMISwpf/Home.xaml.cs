@@ -36,6 +36,8 @@ namespace GMISwpf
             theManager.FilterClassesByGroup (theManager.CurrentStudent.GroupId);
 
             classPanel.DataContext = theManager.FilteredClasses[0];
+
+            EditMeeting.IsEnabled = false;
         }
 
         // Only a test
@@ -59,38 +61,34 @@ namespace GMISwpf
         private void meetingList_SelectionChanged (object sender, SelectionChangedEventArgs e)
         {
             meetingPanel.DataContext = meetingList.SelectedItem;
+            EditMeeting.IsEnabled = true;
             theManager.CurrentMeeting = (Meeting)meetingList.SelectedItem;
-
         }
 
         private void ChangeGroup_Click(object sender, RoutedEventArgs e)
         {
             MainWindow objMainWindow = (MainWindow)Window.GetWindow(this);
-
             objMainWindow.Content = new ChangeGroup();
         }
 
         private void EditGroup_Click(object sender, RoutedEventArgs e)
         {
-            
-            
-            MainWindow objMainWindow = (MainWindow)Window.GetWindow(this);
-
+            MainWindow objMainWindow = (MainWindow)Window.GetWindow (this);
             objMainWindow.Content = new EditGroup();
         }
 
         private void AddMeeting_Click(object sender, RoutedEventArgs e)
         {
             MainWindow objMainWindow = (MainWindow)Window.GetWindow(this);
-
             objMainWindow.Content = new AddMeeting();
         }
 
         private void EditMeeting_Click(object sender, RoutedEventArgs e)
         {
             theManager.CurrentMeeting = (Meeting)meetingList.SelectedItem;
+            Console.WriteLine ("Editing " + theManager.CurrentMeeting);
+            
             MainWindow objMainWindow = (MainWindow)Window.GetWindow(this);
-
             objMainWindow.Content = new EditMeeting();
         }
 
@@ -108,7 +106,6 @@ namespace GMISwpf
         private void LogOut_Click (object sender, RoutedEventArgs e)
         {
             MainWindow objMainWindow = (MainWindow)Window.GetWindow (this);
-
             objMainWindow.Content = new UserSelection ();
         }
     }
