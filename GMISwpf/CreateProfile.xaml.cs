@@ -70,7 +70,7 @@ namespace GMISwpf
                 //move to group selection
                 MainWindow objMainWindow = (MainWindow)Window.GetWindow (this);
 
-                objMainWindow.Content = new SelectGroup ();
+                objMainWindow.Content = new ChangeGroup (true);
             }
             
         }

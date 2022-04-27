@@ -22,13 +22,19 @@ namespace GMISwpf
     {
         private DataManager theManager;
 
-        public ChangeGroup()
+        public ChangeGroup(bool creatingProfile)
         {
             InitializeComponent();
             theManager = (DataManager)Application.Current.FindResource("datamanager");
             Join.IsEnabled = false;
 
             theManager.UnfilterGroups ();
+
+            // If joining/creating a group during profile creation, do not allow the back button
+            if (creatingProfile)
+            {
+                BackButton.Visibility = Visibility.Collapsed;
+            }
         }
 
         private void Join_Click(object sender, RoutedEventArgs e)
@@ -41,11 +47,9 @@ namespace GMISwpf
 
             theManager.UpdateStudentGroup(id, newGroupId);
             theManager.CurrentStudent.GroupId = newGroupId;
-            //theManager.ReloadAll ();
 
             //return home
             MainWindow objMainWindow = (MainWindow)Window.GetWindow(this);
-
             objMainWindow.Content = new Home();
         }
 
@@ -63,7 +67,6 @@ namespace GMISwpf
 
             //return home
             MainWindow objMainWindow = (MainWindow)Window.GetWindow(this);
-
             objMainWindow.Content = new Home();
         }
         private void GroupList_SelectionChanged(object sender, SelectionChangedEventArgs e)

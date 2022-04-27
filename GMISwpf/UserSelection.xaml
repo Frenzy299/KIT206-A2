@@ -15,8 +15,8 @@
         </Grid.ColumnDefinitions>
         <ListBox x:Name="studentList" Margin="10,64,0,62" VerticalAlignment="Center"
                  ItemsSource="{Binding Source={StaticResource StudentList}}" SelectionChanged="studentList_SelectionChanged" Grid.Column="1" HorizontalAlignment="Left" Width="265" FontSize="16"/>
-        <Button x:Name="goButton" Content="Log in" HorizontalAlignment="Right" Height="33" Margin="0,237,10,180" VerticalAlignment="Center" Width="281" Click="Button_Click" FontSize="14"/>
-        <TextBlock HorizontalAlignment="Right" Height="84" Margin="0,127,10,239" TextWrapping="Wrap" VerticalAlignment="Center" Width="253" TextAlignment="Right" FontSize="16"><Run Text="Select a student to log in."/><LineBreak/><Run/><LineBreak/><Run Text="Students in group 0 are not yet set up and will redirect you to profile creation."/></TextBlock>
+        <Button x:Name="goButton" Content="Log in" HorizontalAlignment="Right" Height="33" Margin="0,259,10,158" VerticalAlignment="Center" Width="281" Click="Button_Click" FontSize="14"/>
+        <TextBlock HorizontalAlignment="Right" Height="110" Margin="0,127,10,213" TextWrapping="Wrap" VerticalAlignment="Center" Width="253" TextAlignment="Right" FontSize="16"><Run Text="Select a student to log in."/><LineBreak/><Run/><LineBreak/><Run Text="Students in group 0 are not yet set up and will redirect you to profile creation."/></TextBlock>
 
     </Grid>
 </Page>

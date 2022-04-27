@@ -68,7 +68,7 @@ namespace GMISwpf
         private void ChangeGroup_Click(object sender, RoutedEventArgs e)
         {
             MainWindow objMainWindow = (MainWindow)Window.GetWindow(this);
-            objMainWindow.Content = new ChangeGroup();
+            objMainWindow.Content = new ChangeGroup (false);
         }
 
         private void EditGroup_Click(object sender, RoutedEventArgs e)

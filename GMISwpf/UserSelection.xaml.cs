@@ -31,6 +31,8 @@ namespace GMISwpf
             theManager.UnfilterStudents ();
         }
 
+        // Code for changing pages on button click from stack overflow, link:
+        // https://stackoverflow.com/questions/55388769/set-the-content-of-a-frame-from-different-page-wpf-c-sharp
         // "Go" clicked
         private void Button_Click (object sender, RoutedEventArgs e)
         {
@@ -52,18 +54,6 @@ namespace GMISwpf
         private void studentList_SelectionChanged (object sender, SelectionChangedEventArgs e)
         {
             goButton.IsEnabled = true;
-            Student selectedStudent = (Student)studentList.SelectedItem;
-
-            // this was causing crashing so fixing it later
-            /*if (selectedStudent.GroupId != 0)
-            {
-                goButton.Content = "Log in as " + selectedStudent.GivenName + " " + selectedStudent.FamilyName;
-            }
-            else // group 0
-            {
-                goButton.Content = "Create profile for " + selectedStudent.GivenName + " " + selectedStudent.FamilyName;
-            }*/
-
         }
     }
 }
