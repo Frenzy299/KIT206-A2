@@ -28,7 +28,9 @@ namespace GMISwpf
             InitializeComponent();
             theManager = (DataManager)Application.Current.FindResource ("datamanager");
             //Continue.IsEnabled = false;
-            
+
+            if (theManager.CurrentStudent != null) NameLabel.Content = theManager.CurrentStudent.GivenName + " " + theManager.CurrentStudent.FamilyName;
+
             Title.Items.Add("Mr");
             Title.Items.Add("Mrs");
             Title.Items.Add("Dr");
@@ -61,7 +63,7 @@ namespace GMISwpf
             // if details arent valid
             if (Email.Text != ConfirmEmail.Text)
             {
-                MessageBox.Show ("FAIL MESSAGE");
+                MessageBox.Show ("Email addresses do not match");
             }
             else
             {
@@ -69,7 +71,6 @@ namespace GMISwpf
                 
                 //move to group selection
                 MainWindow objMainWindow = (MainWindow)Window.GetWindow (this);
-
                 objMainWindow.Content = new ChangeGroup (true);
             }
             
@@ -88,14 +89,10 @@ namespace GMISwpf
             }
         }
 
-        private void Campus_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void BackButton_Click (object sender, RoutedEventArgs e)
         {
-            CampusLabel.Content = Campus.Text;
-        }
-
-        private void Title_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            NameLabel.Content = Title.Text + " " + theManager.CurrentStudent.GivenName + " " + theManager.CurrentStudent.FamilyName;
+            MainWindow objMainWindow = (MainWindow)Window.GetWindow (this);
+            objMainWindow.Content = new UserSelection ();
         }
     }
 }

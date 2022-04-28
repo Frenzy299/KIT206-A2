@@ -10,17 +10,19 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="131*"/>
+            <ColumnDefinition Width="274*"/>
+            <ColumnDefinition Width="280*"/>
+            <ColumnDefinition Width="115*"/>
         </Grid.ColumnDefinitions>
-        <Label Content="Join a group" HorizontalAlignment="Left" Height="26" Margin="89,48,0,0" VerticalAlignment="Top" Width="95"/>
-        <ListBox x:Name="GroupList" HorizontalAlignment="Left" Height="239" Margin="89,84,0,0" VerticalAlignment="Top" Width="233" ItemsSource="{Binding Source={StaticResource GroupList}}" SelectionChanged="GroupList_SelectionChanged"/>
-        <Button x:Name="Join" Content="Join" HorizontalAlignment="Left" Height="27" Margin="89,344,0,0" VerticalAlignment="Top" Width="58" Click="Join_Click"/>
-        <Label Content="Create a group" HorizontalAlignment="Left" Height="26" Margin="26,23,0,0" VerticalAlignment="Top" Width="95" Grid.Column="1"/>
-        <Button x:Name="Create" Content="Create" HorizontalAlignment="Left" Height="27" Margin="26,125,0,0" VerticalAlignment="Top" Width="58" Grid.Column="1" Click="Create_Click"/>
-        <TextBox x:Name="GroupName" HorizontalAlignment="Left" Height="22" Margin="26,88,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="176" Grid.Column="1"/>
-        <Label Content="Group name" HorizontalAlignment="Left" Height="29" Margin="26,59,0,0" VerticalAlignment="Top" Width="138" Grid.Column="1"/>
-        <Button x:Name="BackButton" Content="Back" HorizontalAlignment="Left" Height="25" Margin="10,23,0,0" VerticalAlignment="Top" Width="58" Click="Back_Click"/>
+        <Label Content="Join a group" HorizontalAlignment="Left" Height="31" Margin="21,42,0,0" VerticalAlignment="Top" Width="195" Grid.Column="1" FontWeight="Bold" FontSize="16"/>
+        <ListBox x:Name="GroupList" Margin="21,103,20,99" ItemsSource="{Binding Source={StaticResource GroupList}}" SelectionChanged="GroupList_SelectionChanged" Grid.Column="1" FontSize="14"/>
+        <Button x:Name="Join" Content="Join" Height="34" Margin="21,0,20,60" VerticalAlignment="Bottom" Click="Join_Click" Grid.Column="1" FontSize="16"/>
+        <Label Content="Create a group" HorizontalAlignment="Left" Height="36" Margin="26,42,0,0" VerticalAlignment="Top" Width="194" Grid.Column="2" FontWeight="Bold" FontSize="16"/>
+        <Button x:Name="Create" Content="Create" Height="33" Margin="26,175,39,0" VerticalAlignment="Top" Grid.Column="2" Click="Create_Click" FontSize="16"/>
+        <TextBox x:Name="GroupName" Height="28" Margin="26,132,39,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column="2"/>
+        <Label Content="Group name" HorizontalAlignment="Left" Height="29" Margin="26,103,0,0" VerticalAlignment="Top" Width="138" Grid.Column="2"/>
+        <Button x:Name="BackButton" Content="&lt; Back" HorizontalAlignment="Left" Height="40" Margin="25,24,0,0" VerticalAlignment="Top" Width="81" Click="Back_Click" FontSize="14"/>
 
     </Grid>
 </Page>

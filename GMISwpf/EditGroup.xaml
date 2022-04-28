@@ -9,10 +9,15 @@
       Title="EditGroup">
 
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="231*"/>
+            <ColumnDefinition Width="342*"/>
+            <ColumnDefinition Width="227*"/>
+        </Grid.ColumnDefinitions>
         <Button x:Name="Back" Content="Back" HorizontalAlignment="Left" Height="23" Margin="55,36,0,0" VerticalAlignment="Top" Width="57" Click="Back_Click"/>
-        <TextBox x:Name="GroupName" HorizontalAlignment="Left" Height="22" Margin="243,122,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="264"/>
-        <Label Content="Group name" HorizontalAlignment="Left" Height="29" Margin="243,93,0,0" VerticalAlignment="Top" Width="207"/>
-        <Label x:Name="GroupNameLabel" Content="Edit group name" HorizontalAlignment="Left" Height="35" Margin="243,53,0,0" VerticalAlignment="Top" Width="264" FontWeight="Bold" FontSize="16"/>
-        <Button x:Name="SaveChanges" Content="Save changes" HorizontalAlignment="Left" Height="27" Margin="299,177,0,0" VerticalAlignment="Top" Width="151" Click="SaveChanges_Click"/>
+        <TextBox x:Name="GroupName" Height="36" Margin="43,158,35,256" TextWrapping="Wrap" VerticalAlignment="Center" Grid.Column="1" FontSize="16"/>
+        <Label Content="New name" HorizontalAlignment="Left" Height="29" Margin="43,124,0,297" VerticalAlignment="Center" Width="207" Grid.Column="1" FontSize="14"/>
+        <Label x:Name="GroupNameLabel" Content="Edit group name" HorizontalAlignment="Left" Height="35" Margin="43,84,0,331" VerticalAlignment="Center" Width="264" FontWeight="Bold" FontSize="16" Grid.Column="1"/>
+        <Button x:Name="SaveChanges" Content="Save changes" Height="27" Margin="43,199,35,224" VerticalAlignment="Center" Click="SaveChanges_Click" Grid.Column="1"/>
     </Grid>
 </Page>

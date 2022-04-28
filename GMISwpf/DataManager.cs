@@ -119,8 +119,8 @@ namespace GMISwpf
                         ClassID = reader.GetInt32 (0),
                         GroupID = reader.GetInt32 (1),
                         Day = ParseEnum<Day> (reader.GetString (2)),
-                        //StartTime = (DateTime)reader.GetMySqlDateTime(3),
-                        //EndTime = reader.GetDateTime(4),
+                        StartTime = reader.GetString(3),
+                        EndTime = reader.GetString(4),
                         Room = reader.GetString(5)
 
                     });
@@ -220,7 +220,6 @@ namespace GMISwpf
                         GivenName = reader.GetString (1),
                         FamilyName = reader.GetString (2),
                         GroupId = reader.IsDBNull(3) ? 0 : reader.GetInt32(3), // If student is in group NULL then assign group 0 (no group)
-                        //Campus = ParseEnum<Campus>(reader.GetString (5)),
                         Phone = reader.GetString(6),
                         Email = reader.GetString (7)
                     });
@@ -554,7 +553,7 @@ namespace GMISwpf
             {
                 FilteredClasses.Add (new Class
                 {
-                    Room = "No class"
+                    Room = "No class added"
                 });
             }
         }
